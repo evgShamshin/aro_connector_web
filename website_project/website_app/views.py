@@ -35,7 +35,7 @@ def by_archive(request: HttpRequest, year: int) -> HttpResponse:
     if year > 2024:
         raise Http404()
     if year < 2019:
-        return redirect(reverse('slug', '123d'))
+        return redirect(reverse('archive', args=[2024]))
 
     return HttpResponse(f'Архив {year} года ')
 
