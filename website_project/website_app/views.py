@@ -4,8 +4,8 @@ from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 
 # Create your views here.
 def by_index(request: HttpRequest):  # HttpResponse
-    return HttpResponse('Главная страница сайта')
-
+    # return HttpResponse('Главная страница сайта')
+    return render(request, 'website_app/home.html')
 
 def by_categories(request: HttpRequest) -> HttpResponse:
     return HttpResponse('Категории сайта')
