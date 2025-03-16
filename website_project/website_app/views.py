@@ -1,5 +1,6 @@
-from django.shortcuts import render
-from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.urls import reverse
 
 
 # Create your views here.
@@ -31,8 +32,10 @@ def by_slug(request: HttpRequest, par_slug: int) -> HttpResponse:
 
 
 def by_archive(request: HttpRequest, year: int) -> HttpResponse:
-    if year < 2020 or year > 2024:
+    if year > 2024:
         raise Http404()
+    if year < 2019:
+        return redirect(reverse('archive', args=[2024]))
 
     return HttpResponse(f'Архив {year} года ')
 
