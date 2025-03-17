@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Главная страница сайта</title>
+    <title>{{ title|upper }}</title>
 </head>
 <body>
-
+<p>{{  title|slugify }}</p>
+<p>{{ lst.1 }}</p>
+<p>{{ tpl.1 }}</p>
+<p>{{ dct.1 }}</p>
+<p>{{ st }}</p>
+<p>{{ obj.get }}</p>
 </body>
 </html>

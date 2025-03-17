@@ -1,12 +1,32 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404, HttpResponseRedirect, \
+    HttpResponsePermanentRedirect
 from django.urls import reverse
+from django.views.generic import TemplateView
+
+
+class HomeView:
+    def __init__(self, a, b):
+        self.a = str(a)
+        self.b = str(b)
+
+    def get(self):
+        return self.a + ' ' + self.b
 
 
 # Create your views here.
 def by_index(request: HttpRequest):  # HttpResponse
     # return HttpResponse('Главная страница сайта')
-    return render(request, 'website_app/home.html')
+    data = {
+        'title': 'Main page of website',
+        'lst': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        'tpl': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+        'dct': {1: 2, 3: 4, 5: 6, 7: 8, 9: 10},
+        'st': {1, 2, 3, 4, 5, 6, 7, 8, 9},
+        'obj': HomeView(1, 2)
+    }
+    return render(request, 'website_app/home.html', context=data)
+
 
 def by_categories(request: HttpRequest) -> HttpResponse:
     return HttpResponse('Категории сайта')
