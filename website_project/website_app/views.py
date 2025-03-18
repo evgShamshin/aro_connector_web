@@ -4,27 +4,32 @@ from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
 from django.urls import reverse
 from django.views.generic import TemplateView
 
-
-class HomeView:
+'''class HomeView:
     def __init__(self, a, b):
         self.a = str(a)
         self.b = str(b)
 
     def get(self):
-        return self.a + ' ' + self.b
+        return self.a + ' ' + self.b'''
+
+'''data = {
+    'title': 'Main page of website',
+    'lst': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    'tpl': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
+    'dct': {1: 2, 3: 4, 5: 6, 7: 8, 9: 10},
+    'st': {1, 2, 3, 4, 5, 6, 7, 8, 9},
+    'obj': HomeView(1, 2)
+}'''
 
 
 # Create your views here.
 def by_index(request: HttpRequest):  # HttpResponse
     # return HttpResponse('Главная страница сайта')
-    data = {
-        'title': 'Main page of website',
-        'lst': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        'tpl': (1, 2, 3, 4, 5, 6, 7, 8, 9, 10),
-        'dct': {1: 2, 3: 4, 5: 6, 7: 8, 9: 10},
-        'st': {1, 2, 3, 4, 5, 6, 7, 8, 9},
-        'obj': HomeView(1, 2)
-    }
+    data = {'title': 'Главная страница сайта',
+            'about': ["Проекты", "Услуги", "FAQ", "О компании"],
+            'payment': [['Помощь сайту:', 'Ссылка'], ['Номер карты:', '1234567890098765']],
+            'is_draft': False,
+            }
     return render(request, 'website_app/home.html', context=data)
 
 
