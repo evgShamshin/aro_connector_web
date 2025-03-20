@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for cat in cats %}
+        {% if cat.par_id == par_id %}
+            <h1>{{ cat.title }}</h1>
+            <hr>
+            <h2>{{ cat.description }}</h2>
+        {% endif %}
+    {% endfor %}
+{% endblock %}

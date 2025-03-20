@@ -1,25 +1,34 @@
-from django.shortcuts import render, redirect
-from django.http import HttpResponse, HttpRequest, HttpResponseNotFound, Http404
+from django.shortcuts import render
+from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
+
+about = [{'title': 'Главная', 'title_url': 'main'},
+         {'title': 'Услуги', 'title_url': 'services'},
+         {'title': 'FAQ', 'title_url': 'faq'},
+         {'title': 'Контакты', 'title_url': 'contact'},
+         {'title': 'Войти', 'title_url': 'authorization'}, ]
+
+payment = [['Помощь сайту:', 'Ссылка'], ['Номер карты:', '1234567890098765']]
+
+cats = [{'title': 'Проверка модели параметров', 'par_id': 1,
+         'description': 'Проверяет наличие заданных параметров и создаёт отчёт в Excel с основными '
+                        'показателями модели'},
+        {'title': 'Проверка координат', 'par_id': 2,
+         'description': 'Проверяет корректность координат в текущей или заданных моделях и создаёт отчёт в Excel'}]
 
 
 # Create your views here.
 def main_page(request: HttpRequest):  # HttpResponse
     # return HttpResponse('Главная страница сайта')
     data = {'title': 'Главная страница сайта',
-            'about': [{'title': 'Проекты', 'title_url': 'project'},
-                      {'title': 'Услуги', 'title_url': 'services'},
-                      {'title': 'FAQ', 'title_url': 'faq'},
-                      {'title': 'Контакты', 'title_url': 'contact'},
-                      {'title': 'Войти', 'title_url': 'authorization'}, ],
-            'payment': [['Помощь сайту:', 'Ссылка'], ['Номер карты:', '1234567890098765']],
-            'cats': [{'title': 'Заполненность параметров', 'par_id': 1},
-                     {'title': 'Проверка координат', 'par_id': 2}, ],
-            }
+            'about': about,
+            'payment': payment,
+            'cats': cats}
     return render(request, 'website_app/main.html', context=data)
 
 
 def category_page(request: HttpRequest, par_id: int) -> HttpResponse:
-    return HttpResponse(f'Отображение команды с номером {par_id}')
+    return render(request, 'website_app/category.html',
+                  context={'par_id': par_id, 'about': about, 'payment': payment, 'cats': cats})
 
 
 def project_page(request: HttpRequest) -> HttpResponse:

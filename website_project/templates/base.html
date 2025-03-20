@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <title>{{ title }}</title>
+</head>
+<body>
+
+
+{% for a in about %}
+    <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
+{% endfor %}
+
+
+<ul>
+    {% for pay in payment %}
+        <li>
+            {% if pay.0 in 'Помощь сайту:' %}
+                <p2>{{ pay.0 }}</p2>
+                <a href='https://example.com'>Перейти на сайт</a>
+            {% else %}
+                <p2>{{ pay.0 }}</p2>
+                <p2>{{ pay.1 }}</p2>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+{% block content %} {% endblock %}
+
+</body>
+</html>
