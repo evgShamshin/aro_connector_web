@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-<meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>{{ title }}</title>
 </head>
 <body>
-<p1>{{ about|join:" | " }}</p1>
-<h1>{{ title }}</h1>
-<hr>
+
+
+{% for a in about %}
+    <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
+{% endfor %}
+
 
 <ul>
     {% for pay in payment %}
         <li>
-            {% if pay.0 in "Помощь сайту:" %}
+            {% if pay.0 in 'Помощь сайту:' %}
                 <p2>{{ pay.0 }}</p2>
-                <a href="https://example.com">Перейти на сайт</a>
+                <a href='https://example.com'>Перейти на сайт</a>
             {% else %}
                 <p2>{{ pay.0 }}</p2>
                 <p2>{{ pay.1 }}</p2>
@@ -22,5 +25,19 @@
         </li>
     {% endfor %}
 </ul>
+
+<h1>{{ title }}</h1>
+<hr>
+<h2>{{ 'Набор команд' }}</h2>
+
+<ul>
+    {% for cat in cats %}
+        <li>
+            <h3>{{ cat.title }}</h3>
+            <a href='{% url 'category' cat.par_id %}'>Перейти в инструкцию</a>
+        </li>
+    {% endfor %}
+</ul>
+
 </body>
 </html>
