@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+    <link rel="shortcut icon" href="{% static 'website_app/images/logo.ico' %}" type="image/x-icon"/>
+    <img src="{% static 'website_app/images/logo.png' %}" alt="Logo">
     <h1>{{ title }}</h1>
     <hr>
     <h2>{{ 'Набор команд' }}</h2>
