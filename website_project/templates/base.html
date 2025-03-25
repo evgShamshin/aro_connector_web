@@ -2,16 +2,22 @@
 <!DOCTYPE html>
 <html lang='en'>
 <head>
-    <link type="text/css" href="{% static 'women/css/styles.css' %}" rel="stylesheet" />
-    <meta charset='UTF-8'>
-    <title>{{ title }}</title>
+    <title>{{ title }}</title> <!-- Заголовок сайта -->
+    <link href="{% static 'website_app/css/style.css' %}" rel="stylesheet"/> <!-- Ссылка на css -->
+    <meta charset='UTF-8'> <!-- Кодировка документа -->
+    
 </head>
+
 <body>
-
-{% for a in about %}
-    <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
-{% endfor %}
-
+<table class="table-page" border=0 cellpadding="0" cellspacing="0">
+<tr><td valign=top>
+{% block mainmenu %}
+    <div class="header">
+        {% for a in about %}
+            <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
+        {% endfor %}
+    </div>
+{% endblock mainmenu %}
 <ul>
     {% for pay in payment %}
         <li>
@@ -27,6 +33,5 @@
 </ul>
 
 {% block content %} {% endblock %}
-
 </body>
 </html>
