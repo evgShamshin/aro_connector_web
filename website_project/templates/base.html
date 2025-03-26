@@ -5,7 +5,6 @@
     <title>{{ title }}</title> <!-- Заголовок сайта -->
     <link href="{% static 'website_app/css/style.css' %}" rel="stylesheet"/> <!-- Ссылка на css -->
     <meta charset='UTF-8'> <!-- Кодировка документа -->
-    
 </head>
 
 <body>
@@ -13,9 +12,12 @@
 <tr><td valign=top>
 {% block mainmenu %}
     <div class="header">
+        <p class="content">
+            <span class="logo"></span>
         {% for a in about %}
             <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
         {% endfor %}
+        </p>
     </div>
 {% endblock mainmenu %}
 <ul>
@@ -23,6 +25,7 @@
         <li>
             {% if pay.0 in 'Помощь сайту:' %}
                 <p2>{{ pay.0 }}</p2>
+                <a href='https://example.com'>Перейти на сайт</a>
                 <a href='https://example.com'>Перейти на сайт</a>
             {% else %}
                 <p2>{{ pay.0 }}</p2>
