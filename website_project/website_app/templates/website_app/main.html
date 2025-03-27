@@ -9,7 +9,8 @@
         {% for cat in cats %}
             <li>
                 <h3>{{ cat.title }}</h3>
-                <a href='{% url 'category' cat.par_id %}'>Перейти в инструкцию</a>
+                <a href='{% url 'connector' %}'>Перейти в инструкцию</a>
+
             </li>
         {% endfor %}
     </ul>

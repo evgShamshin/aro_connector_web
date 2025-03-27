@@ -8,32 +8,31 @@
 </head>
 
 <body>
-<table class="table-page" border=0 cellpadding="0" cellspacing="0">
-<tr><td valign=top>
-{% block mainmenu %}
     <div class="header">
+        <span class="logo"></span>
         <p class="content">
-            <span class="logo"></span>
-        {% for a in about %}
-            <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
-        {% endfor %}
+            {% for a in about %}
+                <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
+            {% endfor %}
         </p>
     </div>
-{% endblock mainmenu %}
-<ul>
-    {% for pay in payment %}
-        <li>
-            {% if pay.0 in 'Помощь сайту:' %}
-                <p2>{{ pay.0 }}</p2>
-                <a href='https://example.com'>Перейти на сайт</a>
-                <a href='https://example.com'>Перейти на сайт</a>
-            {% else %}
-                <p2>{{ pay.0 }}</p2>
-                <p2>{{ pay.1 }}</p2>
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+
+<div class="content1">
+    <ul>
+        {% for pay in payment %}
+            <li>
+                {% if pay.0 in 'Помощь сайту:' %}
+                    <p2>{{ pay.0 }}</p2>
+                    <a href='https://example.com'>Перейти на сайт</a>
+                    <a href='https://example.com'>Перейти на сайт</a>
+                {% else %}
+                    <p2>{{ pay.0 }}</p2>
+                    <p2>{{ pay.1 }}</p2>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
 
 {% block content %} {% endblock %}
 </body>

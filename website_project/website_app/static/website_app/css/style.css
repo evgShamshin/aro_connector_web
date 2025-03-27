@@ -32,14 +32,19 @@ a:hover {
 /* Логотип в шапке страницы */
 .logo {
     display: inline-block;
-    background: url('../images/chrome_zYFL29xJTv.svg') no-repeat 5px 15px;
-    width: 250px;
-    height: 100px;
+    background: url('../images/logo.svg') no-repeat 5px 15px;
+    width: 350px;
+    height: 300px;
     overflow: hidden;
 }
 
 /* Содержимое шапки страницы */
 .content {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+}
+
+/* Содержимое шапки страницы */
+.content1 {
+    padding: 100px;
 }
