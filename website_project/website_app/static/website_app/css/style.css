@@ -20,6 +20,10 @@ a:hover {
     text-decoration: underline;
 }
 
+a:active {
+    color: red;
+}
+
 /* Полоска сверху */
 .header {
     position: fixed;
@@ -31,20 +35,23 @@ a:hover {
 
 /* Логотип в шапке страницы */
 .logo {
-    display: inline-block;
     background: url('../images/logo.svg') no-repeat 5px 15px;
     width: 350px;
     height: 300px;
     overflow: hidden;
+    margin-left: 280px;
 }
 
 /* Содержимое шапки страницы */
-.content {
-    display: flex;
-    align-items: flex-start;
+.content_menu{
+    font-size: x-large;
+    color: #CC0000;
+    padding-top: 30px;
+    padding-inline: 50px;
 }
 
-/* Содержимое шапки страницы */
-.content1 {
-    padding: 100px;
+/* Содержимое платежа страницы */
+.payment {
+    padding-top: 100px;
+    font-size: inherit;
 }

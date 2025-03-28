@@ -8,26 +8,23 @@
 </head>
 
 <body>
-    <div class="header">
+    <div class="header" style="display: flex;">
         <span class="logo"></span>
-        <p class="content">
             {% for a in about %}
-                <a href='{% url a.title_url %}'>{{ a.title }}</a>{% if not forloop.last %} | {% endif %}
+                <div class="content_menu"><a href='{% url a.title_url %}'>{{ a.title }}</a></div>
             {% endfor %}
-        </p>
     </div>
 
-<div class="content1">
+<div class="payment">
     <ul>
         {% for pay in payment %}
             <li>
                 {% if pay.0 in 'Помощь сайту:' %}
                     <p2>{{ pay.0 }}</p2>
                     <a href='https://example.com'>Перейти на сайт</a>
-                    <a href='https://example.com'>Перейти на сайт</a>
                 {% else %}
                     <p2>{{ pay.0 }}</p2>
-                    <p2>{{ pay.1 }}</p2>
+                    <p2><a href='https://example.com'>{{ pay.1 }} </a> </p2>
                 {% endif %}
             </li>
         {% endfor %}

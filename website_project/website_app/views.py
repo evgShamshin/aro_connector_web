@@ -1,19 +1,34 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 
-about = [{'title': 'Главная', 'title_url': 'main'},
-         {'title': 'Услуги', 'title_url': 'services'},
-         {'title': 'FAQ', 'title_url': 'faq'},
-         {'title': 'Контакты', 'title_url': 'contact'},
-         {'title': 'Войти', 'title_url': 'authorization'}, ]
+about = [{'title': 'BIM', 'title_url': 'bim'},
+         {'title': 'IT', 'title_url': 'it'},
+         {'title': 'Design', 'title_url': 'design'},
+         {'title': 'Projects', 'title_url': 'projects'},
+         {'title': 'Connector', 'title_url': 'connector'}, ]
 
 payment = [['Помощь сайту:', 'Ссылка'], ['Номер карты:', '1234567890098765']]
 
-cats = [{'title': 'Проверка заполненности параметров', 'par_id': 1,
-         'description': 'Проверяет наличие заданных параметров и создаёт отчёт в Excel с основными '
-                        'показателями модели'},
-        {'title': 'Проверка координат', 'par_id': 2,
-         'description': 'Проверяет корректность координат в текущей или заданных моделях и создаёт отчёт в Excel'}]
+cats = [{'title': 'Выгрузчик', 'par_id': '-',
+         'description': '-'},
+        {'title': 'Ключи исключения', 'par_id': '-',
+        'description': '-'},
+        {'title': 'Потолок по помещению', 'par_id': '-',
+        'description': '-'},
+        {'title': 'Замена размеров', 'par_id': '-',
+        'description': '-'},
+        {'title': 'Выгрузка координат', 'par_id': '-',
+         'description': '-'},
+        {'title': 'NotionSync', 'par_id': '-',
+         'description': '-'},
+        {'title': 'Запись параметров', 'par_id': '-',
+         'description': '-'},
+        {'title': 'Развертки помещений', 'par_id': '-',
+         'description': '-'},
+        {'title': 'Обновить из солида', 'par_id': '-',
+         'description': '-'},
+        ]
+
 
 
 # Create your views here.
@@ -26,31 +41,30 @@ def main_page(request: HttpRequest):  # HttpResponse
     return render(request, 'website_app/main.html', context=data)
 
 
-def category_page(request: HttpRequest, par_id: int) -> HttpResponse:
-    return render(request, 'website_app/category.html',
-                  context={'par_id': par_id, 'about': about, 'payment': payment, 'cats': cats})
+def bim_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse('BIM')
 
 
-def project_page(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('Проекты')
+def it_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse('IT')
 
 
-def services(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('Услуги')
+def design_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse('Design')
 
 
-def faq(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('Часто задаваемые вопросы')
+def projects_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse('Projects')
 
 
-def contact(request: HttpRequest) -> HttpResponse:
-    return HttpResponse('Контакты')
+def connector_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse('Connector')
 
 
-def authorization(request: HttpRequest) -> HttpResponse:
+def authorization_page(request: HttpRequest) -> HttpResponse:
     return HttpResponse('Авторизация')
 
 
-def page_nof_found(request, exception) -> HttpResponseNotFound:
+def nof_found_page(request, exception) -> HttpResponseNotFound:
     return HttpResponseNotFound('<h1>Страница не найдена</h1>\n'
                                 '<h3>Проверьте доступные url адреса в .urls</h3>')
