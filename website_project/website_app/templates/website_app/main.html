@@ -3,15 +3,14 @@
 {% block content %}
     <h1>{{ title }}</h1>
     <hr>
-    <h2>{{ 'Набор команд' }}</h2>
 
     <ul>
         {% for cat in cats %}
-            <li>
+            <div class="command_menu">
                 <h3>{{ cat.title }}</h3>
                 <a href='{% url 'connector' %}'>Перейти в инструкцию</a>
+            </div>
 
-            </li>
         {% endfor %}
     </ul>
 {% endblock %}

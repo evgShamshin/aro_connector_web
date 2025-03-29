@@ -29,29 +29,48 @@ a:active {
     position: fixed;
     background: #e5e5e5;
     height: 100px;
-    top: 0;
-    width: 100000%; /* Шапка займёт всю ширину окна браузера */
+    width: 100%; /* Шапка займёт всю ширину окна браузера */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта */
+    z-index: 1; /* Выставляем выше других элементов */
 }
 
 /* Логотип в шапке страницы */
 .logo {
     background: url('../images/logo.svg') no-repeat 5px 15px;
-    width: 350px;
+    width: 250px;
     height: 300px;
     overflow: hidden;
     margin-left: 280px;
 }
 
 /* Содержимое шапки страницы */
-.content_menu{
+.content_menu {
     font-size: x-large;
     color: #CC0000;
     padding-top: 30px;
-    padding-inline: 50px;
+    padding-inline: 30px;
 }
 
 /* Содержимое платежа страницы */
 .payment {
     padding-top: 100px;
     font-size: inherit;
+}
+
+/* Содержимое набора команд */
+.command_menu {
+    height: 120px;
+    position: relative;
+    display: inline-block;
+
+    width: 100%;
+}
+
+.command_menu::after {
+    content: "";
+    position: absolute;
+    bottom: 1px; /* Опускаем вниз */
+    left: -50px; /* Смещаем влево */
+    width: 200%; /* Длина линии */
+    border-bottom: 1px solid black;
 }
