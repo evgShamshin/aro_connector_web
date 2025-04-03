@@ -8,6 +8,7 @@
         {% for cat in cats %}
             <div class="command_menu">
                 <h3>{{ cat.title }}</h3>
+                <img src="{{ cat.image.url }}" alt="my_img"
                 <a href='{% url 'connector' %}'>Перейти в инструкцию</a>
             </div>
 

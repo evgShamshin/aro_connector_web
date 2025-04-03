@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
+from .models import WebsiteApp
 
 about = [{'title': 'BIM', 'title_url': 'bim'},
          {'title': 'IT', 'title_url': 'it'},
@@ -9,26 +10,27 @@ about = [{'title': 'BIM', 'title_url': 'bim'},
 
 payment = [['Помощь сайту:', 'Ссылка'], ['Номер карты:', '1234567890098765']]
 
-cats = [{'title': 'Выгрузчик', 'par_id': '-',
-         'description': '-'},
-        {'title': 'Ключи исключения', 'par_id': '-',
-        'description': '-'},
-        {'title': 'Потолок по помещению', 'par_id': '-',
-        'description': '-'},
-        {'title': 'Замена размеров', 'par_id': '-',
-        'description': '-'},
-        {'title': 'Выгрузка координат', 'par_id': '-',
-         'description': '-'},
-        {'title': 'NotionSync', 'par_id': '-',
-         'description': '-'},
-        {'title': 'Запись параметров', 'par_id': '-',
-         'description': '-'},
-        {'title': 'Развертки помещений', 'par_id': '-',
-         'description': '-'},
-        {'title': 'Обновить из солида', 'par_id': '-',
-         'description': '-'},
-        ]
+# cats = [{'title': 'Выгрузчик', 'par_id': '-',
+#          'description': '-'},
+#         {'title': 'Ключи исключения', 'par_id': '-',
+#         'description': '-'},
+#         {'title': 'Потолок по помещению', 'par_id': '-',
+#         'description': '-'},
+#         {'title': 'Замена размеров', 'par_id': '-',
+#         'description': '-'},
+#         {'title': 'Выгрузка координат', 'par_id': '-',
+#          'description': '-'},
+#         {'title': 'NotionSync', 'par_id': '-',
+#          'description': '-'},
+#         {'title': 'Запись параметров', 'par_id': '-',
+#          'description': '-'},
+#         {'title': 'Развертки помещений', 'par_id': '-',
+#          'description': '-'},
+#         {'title': 'Обновить из солида', 'par_id': '-',
+#          'description': '-'},
+#         ]
 
+cats = WebsiteApp.objects.all()
 
 
 # Create your views here.
