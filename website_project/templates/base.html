@@ -9,7 +9,7 @@
 
 <body>
     <div class="header" style="display: flex;">
-        <span class="logo"></span>
+        <a href="https://example.com" class="logo"></a>
             {% for a in about %}
                 <div class="content_menu"><a href='{% url a.title_url %}'>{{ a.title }}</a></div>
             {% endfor %}
