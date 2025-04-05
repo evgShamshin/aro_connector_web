@@ -59,6 +59,7 @@ def projects_page(request: HttpRequest) -> HttpResponse:
     return HttpResponse('Projects')
 
 
+
 def connector_page(request: HttpRequest, article_slug) -> HttpResponse:
     return HttpResponse(article_slug)
 
