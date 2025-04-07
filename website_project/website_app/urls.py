@@ -9,5 +9,6 @@ urlpatterns = [
     path('it/', views.it_page, name='it'),
     path('design/', views.design_page, name='design'),
     path('projects/', views.projects_page, name='projects'),
-    # path('connector/<slug/article_slug>/', views.connector_page, name='connector'),
+    path('connector/', views.connector_page, name='connector'),
+    path('connector/<slug:article_slug>/', views.connector_commands_page, name='connector_commands'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

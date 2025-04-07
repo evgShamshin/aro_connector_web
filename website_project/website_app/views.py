@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 from .models import WebsiteApp
 
@@ -59,9 +59,13 @@ def projects_page(request: HttpRequest) -> HttpResponse:
     return HttpResponse('Projects')
 
 
+def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
+    post = get_object_or_404(WebsiteApp, slug=article_slug)
+    return HttpResponse(f"Команда {article_slug}")
 
-def connector_page(request: HttpRequest, article_slug) -> HttpResponse:
-    return HttpResponse(article_slug)
+
+def connector_page(request: HttpRequest) -> HttpResponse:
+    return HttpResponse("Connector")
 
 
 def authorization_page(request: HttpRequest) -> HttpResponse:
