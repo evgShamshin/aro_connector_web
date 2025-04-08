@@ -10,8 +10,8 @@
                 <h3>{{ cat.title }}</h3>
                 <div class="image">
                     <img src="{{ cat.image.url }}" alt="my_img"></div>
-                    <a href='{% url 'connector' %}'>Перейти в инструкцию</a>
-                    <h3>{{ cat.article_slug }}</h3>
+                    <a href='{% url 'connector_commands' article_slug=cat.article_slug %}'
+                    >Перейти в инструкцию</a>
             </div>
 
         {% endfor %}

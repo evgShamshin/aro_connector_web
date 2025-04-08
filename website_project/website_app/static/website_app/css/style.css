@@ -80,6 +80,6 @@ a:active {
 /* Изображение содержимого набора команд */
 .image {
     position: relative;
-    top: 10px;   /* вниз */
+    top: 10px; /* вниз */
     display: inline-block;
 }

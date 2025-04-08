@@ -9,26 +9,13 @@
 
 <body>
     <div class="header" style="display: flex;">
-        <a href="https://example.com" class="logo"></a>
+        <a href="https://www.arogroup.ru/" class="logo"></a>
             {% for a in about %}
-                <div class="content_menu"><a href='{% url a.title_url %}'>{{ a.title }}</a></div>
+                <div class="content_menu"><a href='{{ a.title_url }}'>{{ a.title }}</a></div>
             {% endfor %}
     </div>
 
 <div class="payment">
-    <ul>
-        {% for pay in payment %}
-            <li>
-                {% if pay.0 in 'Помощь сайту:' %}
-                    <p2>{{ pay.0 }}</p2>
-                        <a href='https://example.com'>Перейти на сайт</a>
-                {% else %}
-                    <p2>{{ pay.0 }}</p2>
-                    <p2><a href='https://example.com'>{{ pay.1 }} </a> </p2>
-                {% endif %}
-            </li>
-        {% endfor %}
-    </ul>
 </div>
 
 {% block content %} {% endblock %}
