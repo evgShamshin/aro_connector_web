@@ -59,7 +59,7 @@ a:active {
     font-size: inherit;
 }
 
-/* Содержимое набора команд */
+/* Содержимое набора команд на главной странице */
 .command_menu {
     height: 150px;
     position: relative;
@@ -77,9 +77,16 @@ a:active {
     border-bottom: 1px solid black;
 }
 
+/* Содержимое набора команды */
+.command {
+    align-items: center;
+    gap: 10px;
+}
+
 /* Изображение содержимого набора команд */
 .image {
     position: relative;
     top: 10px; /* вниз */
     display: inline-block;
 }
+
