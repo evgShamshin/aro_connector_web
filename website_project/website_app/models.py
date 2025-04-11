@@ -7,14 +7,19 @@ class WebsiteApp(models.Model):
     link = models.URLField(blank=True)
     article_slug = models.SlugField(blank=True)
     image = models.ImageField(upload_to='media/', blank=True)
+    group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True)
     # time_create = models.DateTimeField(auto_now_add=True)
     # time_update = models.DateTimeField(auto_now=True)
-    # is_published = models.BooleanField(default=True)
+    # is_published = models.BooleanField(default=False)
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('pk',)
 
 
-class About(models.Model):
+class Group(models.Model):
     title = models.CharField(max_length=255)
-    link = models.URLField(blank=True)
+    article_slug = models.SlugField(blank=True)
+
+    def __str__(self):
+        return self.title
+
