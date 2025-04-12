@@ -16,6 +16,7 @@ class WebsiteApp(models.Model):
         ordering = ('pk',)
 
 
+
 class Group(models.Model):
     title = models.CharField(max_length=255)
     article_slug = models.SlugField(blank=True)
