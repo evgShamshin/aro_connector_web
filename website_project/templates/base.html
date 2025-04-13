@@ -12,10 +12,10 @@
         <a href="https://www.arogroup.ru/" class="logo"></a>
             {% for a in about %}
                 <div class="content_menu">
-                {% if "http" in a.title_url %}
-                    <a href='{{ a.title_url }}'>{{ a.title }}</a>
+                {% if "http" in a.link %}
+                    <a href='{{ a.link }}'>{{ a.title }}</a>
                 {% else %}
-                    <a href='{% url a.title_url %}'>{{ a.title }}</a>
+                    <a href='{% url a.link %}'>{{ a.title }}</a>
                 {% endif %}</div>
             {% endfor %}
     </div>

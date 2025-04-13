@@ -5,12 +5,12 @@
     <hr>
 
     <ul>
-        {% for cat in cats %}
+        {% for command in commands %}
             <div class="command_menu">
-                <h3>{{ cat.title }}</h3>
+                <h3>{{ command.title }}</h3>
                 <div class="image">
-                    <img src="{{ cat.image.url }}" alt="my_img"></div>
-                    <a href='{% url 'connector_commands' article_slug=cat.article_slug %}'
+                    <img src="{{ command.image.url }}" alt="my_img"></div>
+                    <a href='{% url 'connector_commands' article_slug=command.slug %}'
                     >Перейти в инструкцию</a>
             </div>
 
