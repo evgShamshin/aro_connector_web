@@ -53,9 +53,9 @@ a:active {
     padding-inline: 30px;
 }
 
-/* Содержимое платежа страницы */
-.payment {
-    padding-top: 100px;
+/* Содержимое групп команд */
+.group_menu {
+    padding-top: 110px;
     font-size: inherit;
 }
 

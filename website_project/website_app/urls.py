@@ -7,5 +7,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', lambda request: redirect('/connector/')),
     path('connector/', views.connector_page, name='connector'),
-    path('connector/<slug:article_slug>/', views.connector_commands_page, name='connector_commands'),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('connector/command/<slug:article_slug>/', views.connector_commands_page, name='connector_commands'),
+    path('connector/group/<slug:group_slug>/', views.connector_page_by_group, name='connector_group'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

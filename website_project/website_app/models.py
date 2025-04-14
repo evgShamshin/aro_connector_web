@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Класс представления таблицы в БД для хранения информации о командах

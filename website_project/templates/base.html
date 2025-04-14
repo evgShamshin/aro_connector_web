@@ -20,7 +20,12 @@
             {% endfor %}
     </div>
 
-<div class="payment">
+<div class="group_menu">
+    <a href="{% url 'connector' %}">Все категории |</a>
+    {% for group in groups %}
+        <a href='/connector/group/{{ group.slug }}'>{{ group.title }}
+        {% if not forloop.last %} | {% endif %}</a>
+    {% endfor %}
 </div>
 
 {% block content %} {% endblock %}
