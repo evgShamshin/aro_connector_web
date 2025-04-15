@@ -12,7 +12,7 @@ class Command(models.Model):
     group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True)
 
     class Meta:
-        ordering = ('pk',)
+        ordering = ('-pk',)
 
 
 # Класс представления таблицы в БД для хранения информации о группах команд
