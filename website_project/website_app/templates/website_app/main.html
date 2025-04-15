@@ -7,8 +7,9 @@
     <ul>
         {% for command in commands %}
             <div class="command_menu">
-                <h3>{{ command.title }}</h3>
-                <div class="image">
+                <h2><a href="{% url 'connector_group' command.group.slug %}">{{ command.group.title }}</a></h2>
+                <div class="inline-icon-block">
+                    <h3>{{ command.title }}</h3>
                     <img src="{{ command.image.url }}" alt="my_img"></div>
                     <a href='{% url 'connector_commands' article_slug=command.slug %}'
                     >Перейти в инструкцию</a>
@@ -16,4 +17,5 @@
 
         {% endfor %}
     </ul>
+
 {% endblock %}

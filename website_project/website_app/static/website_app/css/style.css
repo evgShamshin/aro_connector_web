@@ -39,7 +39,7 @@ a:active {
     transition: fill 0.3s ease;
     background: url('../images/logo.svg') no-repeat 5px 15px;
     width: 250px;
-    height: 300px;
+    height: 100px;
     overflow: hidden;
     margin-left: 280px;
 }
@@ -57,28 +57,59 @@ a:active {
 .group_menu {
     padding-top: 110px;
     font-size: inherit;
+    display: inline-block;
+
 }
 
 /* Содержимое набора команд на главной странице */
 .command_menu {
-    height: 150px;
+    height: 190px;
     position: relative;
-    display: inline-block;
     width: 100%;
+
+
+    display: flex; /* превращаем в flex-контейнер */
+    flex-direction: column; /* размещаем элементы сверху вниз */
+    justify-content: flex-start; /* центрируем по вертикали */
+    text-align: left; /* центрируем текст */
+
+    padding-top: 10px;
+    box-sizing: border-box;
+}
+
+/* Изображение содержимого набора команд */
+.inline-icon-block {
+    display: flex;
+    align-items: center;
+    justify-content: left; /* Центрирует иконку и текст внутри блока */
+    gap: 8px; /* Расстояние между иконкой и текстом */
+}
+
+/* Удаление лишних отступов у элементов */
+.command_menu h3,
+.command_menu a {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* Более плотная вертикальная посадка */
+    font-size: 1rem;   /* Опционально можно уменьшить размер */
+}
+
+.command_menu h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.2; /* Более плотная вертикальная посадка */
+    font-size: 1rem;   /* Опционально можно уменьшить размер */
+    background-color: #e5e5e5;
 }
 
 /* Линия под содержимым набора команд */
 .command_menu::after {
     content: "";
     position: absolute;
-    bottom: 1px; /* Опускаем вниз */
+    bottom: 10px; /* Опускаем вниз */
     left: -50px; /* Смещаем влево */
     width: 200%; /* Длина линии */
     border-bottom: 1px solid black;
-}
-
-/* Содержимое набора команды */
-.command {
 }
 
 /* Изображение содержимого набора команд */
@@ -88,3 +119,10 @@ a:active {
     display: inline-block;
 }
 
+.command{
+
+}
+
+.command h2{
+    background-color: #e5e5e5;
+}
