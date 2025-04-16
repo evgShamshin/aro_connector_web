@@ -119,10 +119,9 @@ a:active {
     display: inline-block;
 }
 
-.command{
-
-}
-
-.command h2{
+/* Описание команды */
+.command h3,
+.command a {
     background-color: #e5e5e5;
+    margin-bottom: -5px;
 }
