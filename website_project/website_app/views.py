@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
-from .models import Command, About, Group
+from .models import Command, About, Group, Tag
 
 
 # Главная страница сайта
@@ -8,6 +8,7 @@ def connector_page(request: HttpRequest):  # HttpResponse
     data = {'title': 'Набор команд',
             'about': About.objects.all(),
             'commands': Command.objects.all(),
+            'tags': Tag.objects.all(),
             'groups': Group.objects.all()}
 
     return render(request, 'website_app/main.html', context=data)
@@ -15,11 +16,26 @@ def connector_page(request: HttpRequest):  # HttpResponse
 
 # Главная страница с фильтрацией по категориям
 def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
-    data = {'title': 'Набор команд по группам',
+    data = {'title': 'Набор команд',
+            'title_group': Group.objects.filter(slug=group_slug).get(),
             'about': About.objects.all(),
             'groups': Group.objects.all(),
             'group': get_object_or_404(Group, slug=group_slug),
+            'tags': Tag.objects.all(),
             'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug)), }
+
+    return render(request, 'website_app/main.html', context=data)
+
+
+# Главная страница с фильтрацией по тегам
+def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
+    data = {'title': 'Набор команд',
+            'title_tag': Tag.objects.filter(slug=tag_slug).get(),
+            'about': About.objects.all(),
+            'groups': Group.objects.all(),
+            'tags': Tag.objects.all(),
+            'tag': get_object_or_404(Tag, slug=tag_slug),
+            'commands': Command.objects.filter(tag=get_object_or_404(Tag, slug=tag_slug)), }
 
     return render(request, 'website_app/main.html', context=data)
 
@@ -29,6 +45,7 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
     data = {'title': 'Команда',
             'about': About.objects.all(),
             'groups': Group.objects.all(),
+            'tags': Tag.objects.all(),
             'obj': get_object_or_404(Command, slug=article_slug), }
 
     return render(request, 'website_app/command.html', context=data)
