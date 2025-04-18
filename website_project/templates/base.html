@@ -28,6 +28,16 @@
     {% endfor %}
 </div>
 
+<div class="tag_menu_container">
+    {% for tag in tags %}
+        <div class="tag_menu">
+            <a href="{% url 'connector_tag' tag.slug %}">
+                {{ tag.title }}
+            </a>
+        </div>
+    {% endfor %}
+</div>
+
 {% block content %} {% endblock %}
 </body>
 </html>

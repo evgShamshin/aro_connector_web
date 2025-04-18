@@ -3,9 +3,9 @@
 
 {% block content %}
 <div class="command">
-    <h3><a href="{% url 'connector_group' obj.group.slug %}">{{ obj.group.title }}</a></h3>
-    <h2>{{ obj.title }}
-        <div class="image"> <img src="{{ obj.image.url }} "></div></h2>
+    <h1>{{ obj.title }}
+        <div class="image"> <img src="{{ obj.image.url }} "></div></h1>
+    <h2><a href="{% url 'connector_group' obj.group.slug %}">{{ obj.group.title }}</a></h2>
 <hr>
     <h4>{{ obj.description }}</h4>
 </div>

@@ -12,8 +12,9 @@ class Command(models.Model):
     group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True)
     tag = models.ManyToManyField('Tag', blank=True)
 
+
     class Meta:
-        ordering = ('-pk',)
+        ordering = ('pk',)
 
 
 # Информация о группах команд
@@ -29,6 +30,9 @@ class Group(models.Model):
 class Tag(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(blank=True)
+
+    def __str__(self):
+        return self.title
 
 
 # Информации о направлениях компании
