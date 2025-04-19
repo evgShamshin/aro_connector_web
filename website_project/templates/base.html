@@ -30,7 +30,7 @@
 
 <div class="tag_menu_container">
     {% for tag in tags %}
-        <div class="tag_menu">
+        <div class="tag_menu_margin_top_5px">
             <a href="{% url 'connector_tag' tag.slug %}">
                 {{ tag.title }}
             </a>
