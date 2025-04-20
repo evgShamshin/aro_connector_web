@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block content %}
+
 <div class="command">
     <h1>{{ obj.title }}
         <div class="image"> <img src="{{ obj.image.url }} "></div></h1>
@@ -9,4 +10,5 @@
 <hr>
     <h4>{{ obj.description }}</h4>
 </div>
+
 {% endblock %}
