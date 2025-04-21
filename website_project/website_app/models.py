@@ -12,7 +12,6 @@ class Command(models.Model):
     group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True)
     tag = models.ManyToManyField('Tag', blank=True)
 
-
     class Meta:
         ordering = ('pk',)
 
