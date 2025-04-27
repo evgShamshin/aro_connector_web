@@ -26,7 +26,15 @@ SECRET_KEY = 'django-insecure-2qu9(7-8ho35c9hit*e=3rsijrl@o8v6-6_%qte&(6277s^sb6
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if DEBUG:
+    hide_toolbar_patterns = ["/media/", "/static/"]
+    DEBUG_TOOLBAR_CONFIG = {
+        "SHOW_TOOLBAR_CALLBACK": lambda request: not any(request.path.startswith(p) for p in hide_toolbar_patterns),
+    }
+
 ALLOWED_HOSTS = ['127.0.0.1']
+
+INTERNAL_IPS = ['127.0.0.1',]
 
 # Application definition
 
@@ -39,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'website_app.apps.WebsiteAppConfig',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

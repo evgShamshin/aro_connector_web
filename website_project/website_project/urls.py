@@ -20,8 +20,8 @@ from website_app import urls
 from website_app.views import nof_found_page
 
 urlpatterns = [
+    path('__debug__/', include('debug_toolbar.urls')),
     path('admin/', admin.site.urls),
-    path('', include(urls)),
-]
+    path('', include(urls)),]
 
 handler404 = nof_found_page
