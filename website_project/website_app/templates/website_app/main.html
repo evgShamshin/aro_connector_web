@@ -15,8 +15,6 @@
 
     {% for command in commands %}
         <div class="command_menu">
-
-
             <h2><a href="{% url 'connector_group' command.group.slug %}">{{ command.group.title }}</a></h2>
             <div class="inline-icon-block">
                 <a href='{% url 'connector_commands' article_slug=command.slug %}'>
@@ -26,13 +24,16 @@
             </div>
             <div class="descr_line_1"><h3>{{ command.description }}</h3></div>
 
-
-        <div class="tag_menu_container">
-                {% for tag in command.tag.all %}
+            <div class="tags-container">
+                {% if command.first_tag %}
                     <div class="tag_menu_margin_top_65px">
-                    <span class="tag"><a href="{% url 'connector_tag' tag.slug %}" class="tag">{{ tag.title }}</a></span>
+                    <span class="tag">
+                        <a href="{% url 'connector_tag' command.first_tag.0.slug %}">
+                            {{ command.first_tag.0.title }}
+                        </a>
+                    </span>
                     </div>
-                {% endfor %}
+                {% endif %}
             </div>
 
         </div>

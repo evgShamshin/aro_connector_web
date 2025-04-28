@@ -1,3 +1,4 @@
+from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 from .models import Command, About, Group, Tag
@@ -7,7 +8,8 @@ from .models import Command, About, Group, Tag
 def connector_page(request: HttpRequest):  # HttpResponse
     data = {'title': 'Набор команд',
             'about': About.objects.all(),
-            'commands': Command.objects.all(),
+            'commands': Command.objects.select_related('group').prefetch_related(
+             Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')),
             'tags': Tag.objects.all(),
             'groups': Group.objects.all()}
 
@@ -19,7 +21,7 @@ def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
     data = {'title': 'Набор команд',
             'title_group': Group.objects.filter(slug=group_slug).get(),
             'about': About.objects.all(),
-            'groups': Group.objects.all(),
+            'groups': Group.objects.select_related("title", "slug").all(),
             'group': get_object_or_404(Group, slug=group_slug),
             'tags': Tag.objects.all(),
             'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug)), }
