@@ -15,7 +15,9 @@
 
     {% for command in commands %}
         <div class="command_menu">
-            <h2><a href="{% url 'connector_group' command.group.slug %}">{{ command.group.title }}</a></h2>
+        {% with group=command.group %}  <!-- Кешируем группу в переменной -->
+            <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
+        {% endwith %}
             <div class="inline-icon-block">
                 <a href='{% url 'connector_commands' article_slug=command.slug %}'>
                     {{ command.title }}

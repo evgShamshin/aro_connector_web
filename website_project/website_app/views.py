@@ -9,7 +9,7 @@ def connector_page(request: HttpRequest):  # HttpResponse
     data = {'title': 'Набор команд',
             'about': About.objects.all(),
             'commands': Command.objects.select_related('group').prefetch_related(
-             Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')),
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')),
             'tags': Tag.objects.all(),
             'groups': Group.objects.all()}
 
@@ -21,23 +21,30 @@ def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
     data = {'title': 'Набор команд',
             'title_group': Group.objects.filter(slug=group_slug).get(),
             'about': About.objects.all(),
-            'groups': Group.objects.select_related("title", "slug").all(),
-            'group': get_object_or_404(Group, slug=group_slug),
+            'groups': Group.objects.all(),
             'tags': Tag.objects.all(),
-            'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug)), }
+            'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug))
+            .select_related('group').prefetch_related(
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')), }
 
     return render(request, 'website_app/main.html', context=data)
 
 
 # Главная страница с фильтрацией по тегам
 def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
+    tag = get_object_or_404(Tag, slug=tag_slug)
+
     data = {'title': 'Набор команд',
             'title_tag': Tag.objects.filter(slug=tag_slug).get(),
             'about': About.objects.all(),
             'groups': Group.objects.all(),
             'tags': Tag.objects.all(),
             'tag': get_object_or_404(Tag, slug=tag_slug),
-            'commands': Command.objects.filter(tag=get_object_or_404(Tag, slug=tag_slug)), }
+            'commands': Command.objects.filter(tag=tag)  # Фильтруем команды по тегу
+            .select_related('group')  # Оптимизация для ForeignKey
+            .prefetch_related(
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
+            ), }
 
     return render(request, 'website_app/main.html', context=data)
 

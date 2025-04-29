@@ -20,23 +20,24 @@
             {% endfor %}
     </div>
 
-<div class="group_menu">
-    <a href="{% url 'connector' %}">Все категории |</a>
-    {% for group in groups %}
-        <a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a>
-        {% if not forloop.last %} | {% endif %}
-    {% endfor %}
-</div>
+    <div class="group_menu">
+        <a href="{% url 'connector' %}">Все категории |</a>
+        {% for gr in groups %}
+            <a href="{% url 'connector_group' gr.slug %}">{{ gr.title }}</a>
+            {% if not forloop.last %} | {% endif %}
+        {% endfor %}
+    </div>
 
-<div class="tag_menu_container">
-    {% for tag in tags %}
-        <div class="tag_menu_margin_top_5px">
-            <a href="{% url 'connector_tag' tag.slug %}">
-                {{ tag.title }}
-            </a>
-        </div>
+    <div class="tag_menu_container">
+        {% for tag in tags %}
+            <div class="tag_menu_margin_top_5px">
+                <a href="{% url 'connector_tag' tag.slug %}">
+                    {{ tag.title }}
+                </a>
+            </div>
+
     {% endfor %}
-</div>
+    </div>
 
 {% block content %} {% endblock %}
 </body>
