@@ -9,7 +9,7 @@ def connector_page(request: HttpRequest):  # HttpResponse
     data = {'title': 'Набор команд',
             'about': About.objects.all(),
             'commands': Command.objects.select_related('group').prefetch_related(
-                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')),
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1),
             'tags': Tag.objects.all(),
             'groups': Group.objects.all()}
 
@@ -25,7 +25,7 @@ def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
             'tags': Tag.objects.all(),
             'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug))
             .select_related('group').prefetch_related(
-                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')), }
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1), }
 
     return render(request, 'website_app/main.html', context=data)
 
@@ -44,7 +44,7 @@ def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
             .select_related('group')  # Оптимизация для ForeignKey
             .prefetch_related(
                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
-            ), }
+            ).filter(is_published=1), }
 
     return render(request, 'website_app/main.html', context=data)
 

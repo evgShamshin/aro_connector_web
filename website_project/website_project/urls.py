@@ -21,7 +21,8 @@ from website_app.views import nof_found_page
 
 urlpatterns = [
     path('__debug__/', include('debug_toolbar.urls')),
-    path('admin/', admin.site.urls),
-    path('', include(urls)),]
+    path('connector/admin/', admin.site.urls),
+    path('', include(urls)), ]
 
-handler404 = nof_found_page
+admin.site.site_header = 'Администрирование сайта ARO'
+admin.site.index_title = 'Команды плагина ARO'
