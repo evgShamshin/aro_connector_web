@@ -14,14 +14,14 @@ class Command(models.Model):
         DRAFT = 0, 'В разработке'
         PUBLISHED = 1, 'Опубликовано'
 
-    title = models.CharField(max_length=255)
-    description = models.TextField(blank=True)
-    link = models.URLField(blank=True)
-    slug = models.SlugField(blank=True)
-    is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
-    image = models.ImageField(upload_to='media/', blank=True, null=True)
-    group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True)
-    tag = models.ManyToManyField('Tag', blank=True)
+    title = models.CharField(max_length=255, verbose_name='Команда')
+    description = models.TextField(blank=True, verbose_name='Описание')
+    link = models.URLField(blank=True, verbose_name='Документация')
+    slug = models.SlugField(blank=True, verbose_name='Slug')
+    is_published = models.IntegerField(choices=Status.choices, default=Status.DRAFT, verbose_name='Статус')
+    image = models.ImageField(upload_to='media/', blank=True, null=True, verbose_name='Изображение')
+    group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True,verbose_name="Группа")
+    tag = models.ManyToManyField('Tag', blank=True, verbose_name='Тэг')
 
     objects = models.Manager()
     published = PublishedManager()
@@ -30,7 +30,7 @@ class Command(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = "Команды"
+        verbose_name = "Команда"
         verbose_name_plural = "Команды"
         ordering = ('pk',)
 
@@ -40,11 +40,16 @@ class Command(models.Model):
 
 # Информация о группах команд
 class Group(models.Model):
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(blank=True)
+    title = models.CharField(max_length=255, verbose_name="Группа")
+    slug = models.SlugField(blank=True, verbose_name="Slug")
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = "Группа"
+        verbose_name_plural = "Группы"
+        ordering = ('pk',)
 
 
 # Информация о тегах команд
@@ -60,3 +65,11 @@ class Tag(models.Model):
 class About(models.Model):
     title = models.CharField(max_length=255)
     link = models.URLField(blank=True)
+
+
+class User(models.Model):
+    slug = models.SlugField(unique=True, max_length=255)
+    username = models.CharField(unique=True, max_length=100)
+    password = models.CharField(max_length=100)
+    email = models.EmailField(blank=True)
+    is_staff = models.BooleanField(default=False)
