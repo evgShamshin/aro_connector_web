@@ -5,11 +5,14 @@ from .models import Command, Group
 
 @admin.register(Command)
 class CommandAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'is_published')
+    list_display = ('id', 'title', 'group', 'is_published')
     list_display_links = ('id', 'title')
     list_editable = ('is_published',)
     list_per_page = 5
     actions = ('set_published', 'set_unpublished')
+    search_fields = ('title', 'group__title')
+    list_filter = ('is_published', 'group__title')
+
 
     @admin.action(description='Опубликовать выбранные Команды')
     def set_published(self, request, queryset):
