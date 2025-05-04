@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'website_app.middleware.ColoredStatusMiddleware',
 ]
 
 ROOT_URLCONF = 'website_project.urls'
@@ -67,7 +68,7 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates',
-                 BASE_DIR / 'statics', ],
+                 BASE_DIR / 'static', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
