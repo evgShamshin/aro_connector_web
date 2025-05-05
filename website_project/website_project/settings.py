@@ -34,7 +34,7 @@ if DEBUG:
 
 ALLOWED_HOSTS = ['127.0.0.1']
 
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = ['127.0.0.1', ]
 
 # Application definition
 
@@ -67,8 +67,7 @@ ROOT_URLCONF = 'website_project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates',
-                 BASE_DIR / 'static', ],
+        'DIRS': [BASE_DIR / 'templates', ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,7 +124,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -134,3 +133,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'  # URL для доступа к файлам
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # Папка, где будут храниться файлы
+
+# Для разработки (DEBUG=True) добавьте:
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
