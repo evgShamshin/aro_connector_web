@@ -1,0 +1,38 @@
+#header {
+    background: #e5e5e5;
+    color: #666;
+}
+.site-name {
+    color: #666;
+}
+.module caption {
+    background: #e5e5e5;
+    color: #666;
+}
+
+#site-name a:link, #site-name a:visited {
+    color: #666;
+}
+
+a.section:link {
+    color: #666
+}
+
+.button, input[type=submit], input[type=button], .submit-row input, a.button {
+    background: #e5e5e5;
+    color: #666
+}
+
+html[data-theme="light"],
+:root {
+    --body-loud-color: #666;
+    --body-fg: #666;
+    --secondary: #666;
+    --breadcrumbs-bg: #666;
+    --link-fg: #666;
+    --link-hover-color: #666;
+    --header-color: #666;
+    --header-link-color: #a8a5a5;
+    --message-warning-bg: #666;
+    --selected-row: red;
+}

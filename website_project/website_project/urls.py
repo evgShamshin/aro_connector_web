@@ -24,5 +24,5 @@ urlpatterns = [
     path('connector/admin/', admin.site.urls),
     path('', include(urls)), ]
 
-admin.site.site_header = 'Администрирование сайта ARO'
+admin.site.site_header = 'Администрирование сайта'
 admin.site.index_title = 'Команды плагина ARO'
