@@ -28,11 +28,22 @@ html[data-theme="light"],
     --body-loud-color: #666;
     --body-fg: #666;
     --secondary: #666;
-    --breadcrumbs-bg: #666;
     --link-fg: #666;
     --link-hover-color: #666;
     --header-color: #666;
-    --header-link-color: #a8a5a5;
+    --header-link-color: #666;
     --message-warning-bg: #666;
-    --selected-row: red;
+    --selected-row: #a8a5a5;
+    --breadcrumbs-bg: #e5e5e5;
+    --breadcrumbs-fg: #666;
+    --header-bg: #e5e5e5;
+    --default-button-bg: #e5e5e5;
+}
+
+div.breadcrumbs a {
+    color: #666;
+}
+
+div.breadcrumbs a:focus, div.breadcrumbs a:hover {
+    color: #666;
 }
