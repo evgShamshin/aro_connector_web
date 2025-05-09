@@ -47,18 +47,18 @@ a:active {
 .logo {
     transition: fill 0.3s ease;
     background: url('../images/logo.svg') no-repeat 5px 15px;
-    width: 250px;
+    width: 220px;
     height: 100px;
     overflow: hidden;
-    margin-left: 280px;
+    margin-left: 140px;
 }
 
 
 /* Содержимое шапки страницы */
 .content_menu {
-    font-size: x-large;
+    font-size: large;
     color: #CC0000;
-    padding-top: 30px;
+    padding-top: 35px;
     padding-inline: 30px;
 }
 
@@ -256,4 +256,10 @@ a:active {
     background-color: #e5e5e5;
     margin-left: 5px;
     margin-bottom: -17px;
+}
+
+/* Описание плагина */
+.descr_ext {
+    margin-top: 50px;
+    width: 70.5%;
 }

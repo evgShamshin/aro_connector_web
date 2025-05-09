@@ -7,6 +7,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('', lambda request: redirect('/connector/')),
     path('connector/', views.connector_page, name='connector'),
+    path('consulting/', views.consulting_page, name='consulting'),
     path('connector/command/<slug:article_slug>/', views.connector_commands_page, name='connector_commands'),
     path('connector/group/<slug:group_slug>/', views.connector_page_by_group, name='connector_group'),
     path('connector/tag/<slug:tag_slug>/', views.connector_page_by_tag, name='connector_tag'),
