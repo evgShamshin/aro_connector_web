@@ -2,13 +2,50 @@
 {% load static %}
 
 {% block content %}
+    <div class="descr_ext">
+        <h3>{{ descr }}
+    </div>
 
-<div class="command_in">
-    <h1>{{ obj.title }}
-        <div class="image"> <img src="{{ obj.image.url }} "></div></h1>
-    <h2><a href="{% url 'connector_group' obj.group.slug %}">{{ obj.group.title }}</a></h2>
-<hr>
-    <h4>{{ obj.description }}</h4>
-</div>
+    <div class="command">
+        <h1>{{ obj.group.title }}</h1>
+        <hr>
+        <h1>{{ obj.title }}
+            <div class="image"><img src="{{ obj.image.url }} "></div>
+        </h1>
 
+        <div style="white-space: nowrap;">
+            <div class="tags-container" style="display: inline-block;
+            vertical-align: middle;">
+                <div class="tag_menu_margin_top_5px">
+            <span class="tag">
+                <a href="{% url 'connector_tag' commands.first.1 %}">
+                    {{ commands.first.0 }}
+                </a>
+            </span>
+                </div>
+            </div>
+            <a href="{{ obj.link }}" class="confluence"
+               style=" width: 16px; background: white">
+                <div class="confluence"></div>
+            </a>
+
+            <a href="{{ obj.link }}" class="rutube"
+               style=" width: 16px; background: white">
+                <div class="rutube"></div>
+            </a>
+
+            <a href="{{ obj.link }}" class="vkontakte"
+               style=" width: 16px; background: white">
+                <div class="vkontakte"></div>
+            </a>
+        </div>
+
+        <div class="command">
+            <h4>{{ obj.description }}</h4>
+        </div>
+
+        <div class="cost_ext">
+             500.00
+
+    </div>
 {% endblock %}

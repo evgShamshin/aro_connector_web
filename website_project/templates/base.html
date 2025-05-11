@@ -9,35 +9,35 @@
 </head>
 
 <body>
-    <div class="header" style="display: flex;">
-        <a href="https://www.arogroup.ru/" class="logo"></a>
-            {% for a in about %}
-                <div class="content_menu">
-                {% if "http" in a.link %}
-                    <a href='{{ a.link }}'>{{ a.title }}</a>
-                {% else %}
-                    <a href='{% url a.link %}'>{{ a.title }}</a>
-                {% endif %}</div>
-            {% endfor %}
-    </div>
-
-    <div class="group_menu">
-        <a href="{% url 'connector' %}">Все категории |</a>
-        {% for gr in groups %}
-            <a href="{% url 'connector_group' gr.slug %}">{{ gr.title }}</a>
-            {% if not forloop.last %} | {% endif %}
-        {% endfor %}
-    </div>
-
-    <div class="tag_menu_container">
-        {% for tag in tags %}
-            <div class="tag_menu_margin_top_5px">
-                <a href="{% url 'connector_tag' tag.slug %}">
-                    {{ tag.title }}
-                </a>
-            </div>
+<div class="header" style="display: flex;">
+    <a href="https://www.arogroup.ru/" class="logo"></a>
+    {% for a in about %}
+        <div class="content_menu">
+            {% if "http" in a.link %}
+                <a href='{{ a.link }}'>{{ a.title }}</a>
+            {% else %}
+                <a href='{% url a.link %}'>{{ a.title }}</a>
+            {% endif %}</div>
     {% endfor %}
-    </div>
+</div>
+
+<div class="group_menu">
+    <a href="{% url 'connector' %}">Все категории |</a>
+    {% for gr in groups %}
+        <a href="{% url 'connector_group' gr.slug %}">{{ gr.title }}</a>
+        {% if not forloop.last %} | {% endif %}
+    {% endfor %}
+</div>
+
+<div class="tag_menu_container">
+    {% for tag in tags %}
+        <div class="tag_menu_margin_top_5px">
+            <a href="{% url 'connector_tag' tag.slug %}">
+                {{ tag.title }}
+            </a>
+        </div>
+    {% endfor %}
+</div>
 
 {% block content %} {% endblock %}
 </body>

@@ -12,13 +12,17 @@ html, body {
 
 /* Заголовки */
 h1 {
-    margin-left: 5px
 }
 
 /* Гиперссылки */
 a {
     color: #000000;
     text-decoration: none;
+}
+
+hr {
+    margin-left: 0px;
+    width: 70.5%;
 }
 
 /* Гиперссылки при наведении курсора */
@@ -53,6 +57,41 @@ a:active {
     margin-left: 140px;
 }
 
+/* Логотип Сonfluence */
+.confluence {
+    background: url('../images/Сonfluence_16.svg') no-repeat center center;
+    width: 16px;
+    height: 16px;
+    display: inline-block; /* или block в зависимости от контекста */
+    background-size: contain;
+    vertical-align: center;
+    margin-bottom: -5px;
+    margin-left: 5px;
+}
+
+/* Логотип Rutube */
+.rutube {
+    background: url('../images/Rutube_16.svg') no-repeat center center;
+    width: 20px;
+    height: 20px;
+    display: inline-block; /* или block в зависимости от контекста */
+    background-size: contain;
+    vertical-align: center;
+    margin-bottom: -7px;
+    margin-left: 5px;
+}
+
+/* Логотип Vkontakte */
+.vkontakte {
+    background: url('../images/Vkontakte_16.svg') no-repeat center center;
+    width: 21px;
+    height: 21px;
+    display: inline-block; /* или block в зависимости от контекста */
+    background-size: contain;
+    vertical-align: center;
+    margin-bottom: -7px;
+    margin-left: 8px;
+}
 
 /* Содержимое шапки страницы */
 .content_menu {
@@ -130,9 +169,12 @@ a:active {
 }
 
 .command {
-    height: 35px;
     position: relative;
+}
 
+/* Команда */
+.command h1 {
+    font-size: x-large;
 }
 
 /* Команда */
@@ -147,6 +189,7 @@ a:active {
 /* Описание команды */
 .command h4 {
     padding-left: 5px;
+    width: 70.5%;
 }
 
 
@@ -155,15 +198,6 @@ a:active {
     background-color: #e5e5e5;
     margin-left: 5px;
     margin-bottom: -17px;
-}
-
-/* Линия под содержимым набора команд */
-.command::after {
-    content: "";
-    position: absolute;
-    bottom: -5px; /* Опускаем вниз */
-    width: 70.5%; /* Длина линии */
-    border-bottom: 1px solid black;
 }
 
 /* Контейнер тега */
@@ -236,31 +270,15 @@ a:active {
     margin-left: 5px;
 }
 
-/* Команда */
-.command_in h2,
-.command_in a {
-    width: 70.5%;
-    background-color: #e5e5e5;
-    margin-bottom: -5px;
-    color: #666;
-}
-
-/* Описание команды */
-.command_in h4 {
-    padding-left: 5px;
-}
-
-
-/* Полоса команды */
-.command_in_group_header {
-    background-color: #e5e5e5;
-    margin-left: 5px;
-    margin-bottom: -17px;
-}
-
 /* Описание плагина */
 .descr_ext {
     margin-top: 50px;
     width: 70.5%;
+    font-size: small;
+}
+
+/* Стоимость плагина */
+.cost_ext {
+    margin-left: 720px;
     font-size: small;
 }

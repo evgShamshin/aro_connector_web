@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="descr_ext">
+        {{ descr }}
+    </div>
+    <form action="" method="POST">
+        <p><label for="id_1">Текст: </label>
+            <input type="text" id="id_1"
+                   placeholder="Введите текст"></p>
+
+
+        <p>
+            <button type="submit">Отправить</button>
+        </p>
+    </form>
+{% endblock %}

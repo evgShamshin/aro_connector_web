@@ -2,25 +2,23 @@
 
 {% block content %}
     <div class="descr_ext">
-<h3>Плагин Connector - расширение для архитекторов и дизайнеров,
-    добавляющее возможности в Autodesk Revit.
-    Автоматизирует многие процессы и существенно сокращает время создания модели.
-    Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025 версиями Autodesk Revit.<h3></div>
+        <h3>{{ descr }}</div>
+
     <div class="command">
         {% if title_group %}
-            <h2>{{ title_group }}</h2>
+            <h1>{{ title_group }}</h1>
         {% else %}
-            <h2>Все категории</h2>
+            <h1>Все категории</h1>
         {% endif %}
     </div>
 
-
+    <hr>
 
     {% for command in commands %}
         <div class="command_menu">
-        {% with group=command.group %}  <!-- Кешируем группу в переменной -->
-            <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
-        {% endwith %}
+            {% with group=command.group %}  <!-- Кешируем группу в переменной -->
+                <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
+            {% endwith %}
             <div class="inline-icon-block">
                 <a href='{% url 'connector_commands' article_slug=command.slug %}'>
                     {{ command.title }}

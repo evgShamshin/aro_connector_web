@@ -7,6 +7,12 @@ from .models import Command, About, Group, Tag
 # Главная страница сайта
 def connector_page(request: HttpRequest) -> HttpResponse:
     data = {'title': 'ARO Group',
+            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+                        добавляющее возможности в Autodesk Revit.
+                        Автоматизирует многие процессы и существенно сокращает время
+                        создания модели.
+                        Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                        версиями Autodesk Revit.""",
             'about': About.objects.all(),
             'commands': Command.objects.select_related('group').prefetch_related(
                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1),
@@ -19,6 +25,12 @@ def connector_page(request: HttpRequest) -> HttpResponse:
 # Главная страница с фильтрацией по категориям
 def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
     data = {'title': 'ARO Group',
+            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+                            добавляющее возможности в Autodesk Revit.
+                            Автоматизирует многие процессы и существенно сокращает время
+                            создания модели.
+                            Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                            версиями Autodesk Revit.""",
             'title_group': Group.objects.filter(slug=group_slug).get(),
             'about': About.objects.all(),
             'groups': Group.objects.all(),
@@ -35,6 +47,12 @@ def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
     tag = get_object_or_404(Tag, slug=tag_slug)
 
     data = {'title': 'ARO Group',
+            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+                            добавляющее возможности в Autodesk Revit.
+                            Автоматизирует многие процессы и существенно сокращает время
+                            создания модели.
+                            Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                            версиями Autodesk Revit.""",
             'title_tag': Tag.objects.filter(slug=tag_slug).get(),
             'about': About.objects.all(),
             'groups': Group.objects.all(),
@@ -51,11 +69,21 @@ def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
 
 # Страница команды
 def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
-    data = {'title': 'Команда',
+    data = {'title': 'ARO Group',
+            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+                                добавляющее возможности в Autodesk Revit.
+                                Автоматизирует многие процессы и существенно сокращает время
+                                создания модели.
+                                Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                                версиями Autodesk Revit.""",
             'about': About.objects.all(),
             'groups': Group.objects.all(),
             'tags': Tag.objects.all(),
-            'obj': get_object_or_404(Command, slug=article_slug), }
+            'obj': get_object_or_404(Command, slug=article_slug),
+            'commands': Command.objects.select_related('group').prefetch_related(
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
+            filter(title=get_object_or_404(Command, slug=article_slug).title).
+            values_list('tag__title', 'tag__slug'), }
 
     return render(request, 'website_app/command.html', context=data)
 
@@ -63,13 +91,16 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 # Страница консалтинга
 def consulting_page(request: HttpRequest) -> HttpResponse:
     data = {'title': 'ARO Group',
+            'descr': """-
+                        -""",
             'about': About.objects.all(),
             'commands': Command.objects.select_related('group').prefetch_related(
-                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1),
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
+            filter(is_published=1),
             'tags': Tag.objects.all(),
             'groups': Group.objects.all()}
 
-    return render(request, 'website_app/consilting.html', context=data)
+    return render(request, 'website_app/consulting.html', context=data)
 
 
 # Страница в случае отсутствия результата
