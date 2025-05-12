@@ -168,12 +168,37 @@ a:active {
     display: inline-block;
 }
 
+/* GIF набора команд */
+/* Стили для изображения */
+.gif {
+    width: 550px;
+    flex-shrink: 0; /* Запрещаем уменьшение */
+}
+
+.gif img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+/* Основной контейнер */
 .command {
-    position: relative;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 1200px; /* или нужная вам ширина */
+}
+
+/* Обертка для картинки и текста */
+.content-wrapper {
+    display: flex; /* Включаем flex-раскладку */
+    align-items: flex-start; /* Выравниваем элементы по верху */
+    gap: 20px; /* Отступ между картинкой и текстом */
 }
 
 /* Команда */
 .command h1 {
+    margin-top: -5px;
     font-size: x-large;
 }
 
@@ -189,9 +214,19 @@ a:active {
 /* Описание команды */
 .command h4 {
     padding-left: 5px;
-    width: 70.5%;
+    width: 44%;
 }
 
+/* Стили для текстового блока */
+.description {
+    flex-grow: 1; /* Занимает все доступное пространство */
+}
+
+.description h4 {
+    margin: 0;
+    padding: 0;
+    width: 40.5%;
+}
 
 /* Полоса команды */
 .command_group_header {
@@ -279,6 +314,13 @@ a:active {
 
 /* Стоимость плагина */
 .cost_ext {
-    margin-left: 720px;
-    font-size: small;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.cost-container {
+    display: flex;
+    justify-content: flex-end; /* Выравниваем содержимое по правому краю */
+    width: 70.5%;
+
 }

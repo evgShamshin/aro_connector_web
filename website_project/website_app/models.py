@@ -16,11 +16,15 @@ class Command(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Команда')
     description = models.TextField(blank=True, verbose_name='Описание')
-    link = models.URLField(blank=True, verbose_name='Документация')
     slug = models.SlugField(blank=True, verbose_name='Slug')
+    gif = models.ImageField(upload_to='media/website_app/gif', verbose_name='GIF-Изображение', blank=True, null=True)
+    confluence_link = models.URLField(blank=True, null=True, verbose_name='Confluence')
+    rutube_link = models.URLField(blank=True, null=True, verbose_name='Rutube')
+    vkontakte_link = models.URLField(blank=True, null=True, verbose_name='Вконтакте')
+    cost = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null=True, verbose_name='Стоимость')
     is_published = models.IntegerField(choices=Status.choices, default=Status.DRAFT, verbose_name='Статус')
-    image = models.ImageField(upload_to='media/', blank=True, null=True, verbose_name='Изображение')
-    group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True,verbose_name="Группа")
+    image = models.ImageField(upload_to='media/website_app/image', blank=True, null=True, verbose_name='Изображение')
+    group = models.ForeignKey('Group', on_delete=models.PROTECT, null=True, blank=True, verbose_name="Группа")
     tag = models.ManyToManyField('Tag', blank=True, verbose_name='Тэг')
 
     objects = models.Manager()

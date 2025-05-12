@@ -13,7 +13,7 @@
             <div class="image"><img src="{{ obj.image.url }} "></div>
         </h1>
 
-        <div style="white-space: nowrap;">
+        <div style="white-space: nowrap; margin-top: -10px">
             <div class="tags-container" style="display: inline-block;
             vertical-align: middle;">
                 <div class="tag_menu_margin_top_5px">
@@ -41,11 +41,21 @@
         </div>
 
         <div class="command">
-            <h4>{{ obj.description }}</h4>
+            <div class="content-wrapper">
+                <div class="gif"><img src="{{ obj.gif.url }}" alt="Демонстрация"></div>
+                <div class="description">
+                    <h4>{{ obj.description }}</h4>
+                </div>
+            </div>
         </div>
 
-        <div class="cost_ext">
-             500.00
+        <div class="cost-container">
+            <div class="cost_ext">
+                <div class="tag_menu_margin_top_5px">
+                    <span class="tag">{{ obj.cost }}</span>
+                </div>
+            </div>
+        </div>
 
-    </div>
+
 {% endblock %}
