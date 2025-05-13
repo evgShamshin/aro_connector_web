@@ -91,8 +91,12 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 # Страница консалтинга
 def consulting_page(request: HttpRequest) -> HttpResponse:
     data = {'title': 'ARO Group',
-            'descr': """-
-                        -""",
+            'descr': """BIM-консалтинг - это комплекс услуг по внедрению,
+                        адаптации и оптимизации технологий информационного моделирования
+                        (BIM) на всех этапах жизненного цикла строительного проекта.
+                        Мы помогаем компаниям повысить эффективность работы,
+                        сократить сроки проектирования и минимизировать ошибки
+                        за счёт грамотного использования современных цифровых инструментов.""",
             'about': About.objects.all(),
             'commands': Command.objects.select_related('group').prefetch_related(
                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
