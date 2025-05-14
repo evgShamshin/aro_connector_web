@@ -2,6 +2,7 @@ from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 from .models import Command, About, Group, Tag
+from .forms import ConsultForm
 
 
 # Главная страница сайта
@@ -90,6 +91,13 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 
 # Страница консалтинга
 def consulting_page(request: HttpRequest) -> HttpResponse:
+    if request.method == 'POST':
+        form = ConsultForm(request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+    else:
+        form = ConsultForm()
+
     data = {'title': 'ARO Group',
             'descr': """BIM-консалтинг - это комплекс услуг по внедрению,
                         адаптации и оптимизации технологий информационного моделирования
@@ -102,7 +110,8 @@ def consulting_page(request: HttpRequest) -> HttpResponse:
                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
             filter(is_published=1),
             'tags': Tag.objects.all(),
-            'groups': Group.objects.all()}
+            'groups': Group.objects.all(),
+            'form': form, }
 
     return render(request, 'website_app/consulting.html', context=data)
 

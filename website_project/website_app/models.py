@@ -77,3 +77,12 @@ class User(models.Model):
     password = models.CharField(max_length=100)
     email = models.EmailField(blank=True)
     is_staff = models.BooleanField(default=False)
+
+
+class Consult(models.Model):
+    name = models.CharField(max_length=255)
+    surname = models.CharField(max_length=255)
+    email = models.EmailField(blank=True)
+    description = models.TextField(blank=True)
+    date = models.DateField(auto_now=False, auto_now_add=False)
+    attachment = models.FileField(upload_to='media/website_app/atachment', blank=True)

@@ -8,40 +8,10 @@
 
         <h1>Оставить заявку</h1>
         <hr>
-        <form action="">
-
-            <p><label for="id_1">Имя: </label>
-                <input type="text" id="id_1" name="filed_name"
-                       placeholder="Введите текст">
-
-                <label for="id_2">Фамилия: </label>
-                <input type="text" id="id_2" name="filed_surname"
-                       placeholder="Введите текст"></p>
-
-            </p><label for="id_3">Компания: </label>
-            <input type="text" id="id_3" name="filed_company"
-                   placeholder="Введите текст"></p>
+        <form action="" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
             <p>
-
-            <p><label for="id_4">Должность: </label>
-                <input type="text" id="id_4" name="filed_post"
-                       placeholder="Введите текст">
-
-            <p><label for="id_5">Описание: </label>
-                <input type="text" id="id_5" name="filed_description"
-                       placeholder="Введите текст">
-            <p>
-
-            <p><label for="id_6">Срок: </label>
-                <input type="date" id="id_5" name="filed_deadlines"
-                       placeholder="Введите текст">
-            <p>
-
-            <p><label for="id_6">Вложения: </label>
-                <input type="file" id="id_6" name="filed_attachment"
-                       placeholder="Введите текст">
-            <p>
-
                 <button type="submit">Отправить</button>
             </p>
         </form>
