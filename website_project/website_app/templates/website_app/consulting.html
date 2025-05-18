@@ -8,17 +8,16 @@
 
         <h1>Оставить заявку</h1>
         <hr>
-        <form action="" method="POST">
+        <form action="" method="POST" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="form-error">{{ form.non_field_errors }}</div>
             {% for f in form %}
-                <p><label class="form_label" for="{{ f.id_for_label }}">
+                <p><label class="form-label" for="{{ f.id_for_label }}">
                     {{ f.label }}</label>{{ f }}</p>
                 <div class="form_error">{{ f.errors }}</div>
             {% endfor %}
 
-            <p>
-                <button type="submit">Отправить</button>
-            </p>
+            <button type="submit" class="form-button">Отправить</button>
+
         </form>
 {% endblock %}

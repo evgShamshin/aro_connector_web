@@ -308,7 +308,7 @@ a:active {
 /* Описание плагина */
 .descr_ext {
     margin-top: 50px;
-    width: 70.5%;
+    width: 69%;
     font-size: small;
 }
 
@@ -318,27 +318,35 @@ a:active {
     vertical-align: middle;
 }
 
+/* Стоимость плагина */
 .cost-container {
     display: flex;
     justify-content: flex-end; /* Выравниваем содержимое по правому краю */
     width: 70.5%;
 }
 
+/* Поля ввода в Consulting */
 .form-label {
     display: inline-block;
-    min-width: 150px;
+    min-width: 175px;
     vertical-align: top;
-    color: #CC0000;
 }
 
+/* Ошибки полей ввода в Consulting */
 .form-error ul {
     list-style: none;
-    padding: 0;
-    color: #CC0000;
+    padding: 10px;
+    color: red;
 }
 
+/* Кнопка отправки ввода в Consulting */
 .form-button {
-    min-width: 200px;
-    font-size: 16px;
-    color: red
+    min-width: 150px;;
+}
+
+form input,
+form select,
+form textarea {
+    width: 300px;  /* Фиксированная ширина */
+    box-sizing: border-box; /* Учитывает padding и border в ширину */
 }

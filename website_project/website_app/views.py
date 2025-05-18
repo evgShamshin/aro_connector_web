@@ -1,7 +1,7 @@
 from django.db.models import Prefetch
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
-from .models import Command, About, Group, Tag
+from .models import Command, About, Group, Tag, Consult
 from .forms import ConsultForm
 
 
@@ -92,9 +92,15 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 # Страница консалтинга
 def consulting_page(request: HttpRequest) -> HttpResponse:
     if request.method == 'POST':
-        form = ConsultForm(request.POST)
+        form = ConsultForm(request.POST, request.FILES)
         if form.is_valid():
             print(form.cleaned_data)
+            print(request.FILES)
+            try:
+                Consult.objects.create(**form.cleaned_data)
+                return redirect("connector")
+            except:
+                form.add_error(None, form.errors)
     else:
         form = ConsultForm()
 
