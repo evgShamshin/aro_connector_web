@@ -3,7 +3,8 @@ from django import forms
 
 class ConsultForm(forms.Form):
     name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите ваше имя'}),
-                           max_length=255, label="Имя", )
+                           min_length=2, max_length=255, label="Имя")
+    # error_messages={'min_length': "Слишком короткое имя"})
     surname = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Введите вашу фамилию'}),
                               max_length=255, label="Фамилия")
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'example@mail.com'}),
