@@ -85,4 +85,4 @@ class Consult(models.Model):
     email = models.EmailField(blank=True)
     description = models.TextField(blank=True)
     date = models.DateField(auto_now=False, auto_now_add=False)
-    attachment = models.FileField(upload_to='media/website_app/atachment', blank=True)
+    attachment = models.FileField(upload_to='website_app/attachment', blank=True)
