@@ -5,6 +5,7 @@ from .models import Command, About, Group, Tag, Consult
 from .forms import ConsultFormModel
 from django.views import View
 from django.views.generic import TemplateView
+from django.views.generic import ListView
 
 
 # Главная страница сайта
@@ -25,48 +26,85 @@ class ConnectorPage(TemplateView):
 
 
 # Главная страница с фильтрацией по категориям
-def connector_page_by_group(request: HttpRequest, group_slug) -> HttpResponse:
-    data = {'title': 'ARO Group',
-            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
-                            добавляющее возможности в Autodesk Revit.
-                            Автоматизирует многие процессы и существенно сокращает время
-                            создания модели.
-                            Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                            версиями Autodesk Revit.""",
-            'title_group': Group.objects.filter(slug=group_slug).get(),
-            'about': About.objects.all(),
-            'groups': Group.objects.all(),
-            'tags': Tag.objects.all(),
-            'commands': Command.objects.filter(group=get_object_or_404(Group, slug=group_slug))
-            .select_related('group').prefetch_related(
-                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1), }
+class ConnectorPageByGroup(ListView):
+    model = Command
+    template_name = 'website_app/main.html'
+    context_object_name = 'commands'
+    allow_empty = False
 
-    return render(request, 'website_app/main.html', context=data)
+    def get_queryset(self):
+        return Command.objects.filter(
+            group=get_object_or_404(Group, slug=self.kwargs['group_slug'])).select_related('group').prefetch_related(
+            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'ARO Group'
+        context['descr'] = """Плагин Connector - расширение для архитекторов и дизайнеров,
+                             добавляющее возможности в Autodesk Revit.
+                             Автоматизирует многие процессы и существенно сокращает время
+                             создания модели.
+                             Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                             версиями Autodesk Revit."""
+        context['title_group'] = Group.objects.filter(slug=self.kwargs['group_slug']).get()
+        context['about'] = About.objects.all()
+        context['groups'] = Group.objects.all()
+        context['tags'] = Tag.objects.all()
+        return context
 
 
 # Главная страница с фильтрацией по тегам
-def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
-    tag = get_object_or_404(Tag, slug=tag_slug)
+class ConnectorPageByTag(ListView):
+    model = Command
+    template_name = 'website_app/main.html'
+    context_object_name = 'commands'
 
-    data = {'title': 'ARO Group',
-            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
-                            добавляющее возможности в Autodesk Revit.
-                            Автоматизирует многие процессы и существенно сокращает время
-                            создания модели.
-                            Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                            версиями Autodesk Revit.""",
-            'title_tag': Tag.objects.filter(slug=tag_slug).get(),
-            'about': About.objects.all(),
-            'groups': Group.objects.all(),
-            'tags': Tag.objects.all(),
-            'tag': get_object_or_404(Tag, slug=tag_slug),
-            'commands': Command.objects.filter(tag=tag)  # Фильтруем команды по тегу
-            .select_related('group')  # Оптимизация для ForeignKey
-            .prefetch_related(
-                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
-            ).filter(is_published=1), }
+    def get_queryset(self):
+        return Command.objects.filter(tag=self.kwargs['tag_slug']).select_related('group').prefetch_related(
+            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
+        ).filter(is_published=1)
 
-    return render(request, 'website_app/main.html', context=data)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['title'] = 'ARO Group'
+        context['descr'] = """Плагин Connector - расширение для архитекторов и дизайнеров,
+                                     добавляющее возможности в Autodesk Revit.
+                                     Автоматизирует многие процессы и существенно сокращает время
+                                     создания модели.
+                                     Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                                     версиями Autodesk Revit."""
+        context['title_tag'] = Tag.objects.filter(slug=self.kwargs['tag_slug']).get()
+        context['about'] = About.objects.all()
+        context['groups'] = Group.objects.all()
+        context['tags'] = Tag.objects.all()
+        context['tag'] = get_object_or_404(Tag, slug=self.kwargs['tag_slug'])
+        return context
+
+
+# def connector_page_by_tag(request: HttpRequest, tag_slug) -> HttpResponse:
+#     tag = get_object_or_404(Tag, slug=tag_slug)
+#
+#     data = {'title': 'ARO Group',
+#             'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+#                             добавляющее возможности в Autodesk Revit.
+#                             Автоматизирует многие процессы и существенно сокращает время
+#                             создания модели.
+#                             Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+#                             версиями Autodesk Revit.""",
+#             'title_tag': Tag.objects.filter(slug=tag_slug).get(),
+#             'about': About.objects.all(),
+#             'groups': Group.objects.all(),
+#             'tags': Tag.objects.all(),
+#             'tag': get_object_or_404(Tag, slug=tag_slug),
+#             'commands': Command.objects.filter(tag=tag)  # Фильтруем команды по тегу
+#             .select_related('group')  # Оптимизация для ForeignKey
+#             .prefetch_related(
+#                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
+#             ).filter(is_published=1), }
+#
+#     return render(request, 'website_app/main.html', context=data)
 
 
 # Страница команды
