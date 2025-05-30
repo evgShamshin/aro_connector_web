@@ -8,7 +8,7 @@ urlpatterns = [
                   path('', lambda request: redirect('/connector/')),
                   path('connector/', views.ConnectorPage.as_view(), name='connector'),
                   path('consulting/', views.ConsultingPage.as_view(), name='consulting'),
-                  path('connector/command/<slug:article_slug>/', views.connector_commands_page,
+                  path('connector/command/<slug:command_slug>/', views.ConnectorCommandPage.as_view(),
                        name='connector_commands'),
                   path('connector/group/<slug:group_slug>/', views.ConnectorPageByGroup.as_view(),
                        name='connector_group'),
