@@ -18,7 +18,9 @@
             vertical-align: middle;">
                 <div class="tag_menu_margin_top_5px">
             <span class="tag">
-                <a href="{% url 'connector_tag' commands.first.1 %}">
+                <a href="{% url 'connector_tag' first_tag.slug %}">
+                    {{ first_tag.title }}
+                </a>
                     {{ commands.first.0 }}
                 </a>
             </span>

@@ -93,12 +93,9 @@ class ConnectorCommandPage(DetailView):
             title=get_object_or_404(Command, slug=self.kwargs[self.slug_url_kwarg]).title).values_list(
             'tag__title', 'tag__slug')
 
-    def get_context_data(self, *, object_list=None, **kwargs):
 
 
 
-# def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
-#     data = {'title': 'ARO Group',
 #             'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
 #                                 добавляющее возможности в Autodesk Revit.
 #                                 Автоматизирует многие процессы и существенно сокращает время
@@ -113,8 +110,6 @@ class ConnectorCommandPage(DetailView):
 #                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
 #             filter(title=get_object_or_404(Command, slug=article_slug).title).
 #             values_list('tag__title', 'tag__slug'), }
-#
-#     return render(request, 'website_app/command.html', context=data)
 
 
 # Страница консалтинга
