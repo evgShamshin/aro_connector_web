@@ -20,7 +20,7 @@
                 <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
             {% endwith %}
             <div class="inline-icon-block">
-                <a href='{% url 'connector_commands' command_slug=command.slug %}'>
+                <a href='{% url 'connector_commands' article_slug=command.slug %}'>
                     {{ command.title }}
                 </a>
                 <img src="{{ command.image.url }}" alt="my_img">

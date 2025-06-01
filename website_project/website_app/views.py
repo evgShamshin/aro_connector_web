@@ -82,34 +82,24 @@ class ConnectorPageByTag(ListView):
 
 
 # Страница команды
-class ConnectorCommandPage(DetailView):
-    template_name = 'website_app/command.html'
-    slug_url_kwarg = 'command_slug'
-    context_object_name = 'commands'
+def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
+    data = {'title': 'ARO Group',
+            'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
+                                добавляющее возможности в Autodesk Revit.
+                                Автоматизирует многие процессы и существенно сокращает время
+                                создания модели.
+                                Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                                версиями Autodesk Revit.""",
+            'about': About.objects.all(),
+            'groups': Group.objects.all(),
+            'tags': Tag.objects.all(),
+            'obj': get_object_or_404(Command, slug=article_slug),
+            'commands': Command.objects.select_related('group').prefetch_related(
+                Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
+            filter(title=get_object_or_404(Command, slug=article_slug).title).
+            values_list('tag__title', 'tag__slug'), }
 
-    def get_queryset(self):
-        return Command.objects.select_related('group').prefetch_related(
-            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(
-            title=get_object_or_404(Command, slug=self.kwargs[self.slug_url_kwarg]).title).values_list(
-            'tag__title', 'tag__slug')
-
-
-
-
-#             'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
-#                                 добавляющее возможности в Autodesk Revit.
-#                                 Автоматизирует многие процессы и существенно сокращает время
-#                                 создания модели.
-#                                 Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-#                                 версиями Autodesk Revit.""",
-#             'about': About.objects.all(),
-#             'groups': Group.objects.all(),
-#             'tags': Tag.objects.all(),
-#             'obj': get_object_or_404(Command, slug=article_slug),
-#             'commands': Command.objects.select_related('group').prefetch_related(
-#                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
-#             filter(title=get_object_or_404(Command, slug=article_slug).title).
-#             values_list('tag__title', 'tag__slug'), }
+    return render(request, 'website_app/command.html', context=data)
 
 
 # Страница консалтинга
