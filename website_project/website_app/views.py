@@ -1,10 +1,12 @@
 from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
+from django.urls import reverse_lazy
+
 from .models import Command, About, Group, Tag, Consult
 from .forms import ConsultFormModel
 from django.views import View
-from django.views.generic import TemplateView, DetailView
+from django.views.generic import TemplateView, DetailView, FormView, CreateView, UpdateView, DeleteView
 from django.views.generic import ListView
 
 
