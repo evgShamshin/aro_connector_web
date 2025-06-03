@@ -6,30 +6,24 @@ from django.urls import reverse_lazy
 from .models import Command, About, Group, Tag, Consult
 from .forms import ConsultFormModel
 from django.views import View
-from django.views.generic import TemplateView, DetailView, FormView, CreateView, UpdateView, DeleteView
+from django.views.generic import TemplateView
 from django.views.generic import ListView
+
+from .utils import DataMixin
 
 
 # Главная страница сайта
-class ConnectorPage(TemplateView):
+class ConnectorPage(DataMixin, TemplateView):
     template_name = 'website_app/main.html'
-    extra_context = {'title': 'ARO Group',
-                     'descr': """Плагин Connector - расширение для архитекторов и дизайнеров,
-                        добавляющее возможности в Autodesk Revit.
-                        Автоматизирует многие процессы и существенно сокращает время
-                        создания модели.
-                        Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                        версиями Autodesk Revit.""",
-                     'about': About.objects.all(),
-                     'commands': Command.objects.select_related('group').prefetch_related(
-                         Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1),
-                     'tags': Tag.objects.all(),
-                     'groups': Group.objects.all()}
+    descr = "Плагин Connector"
+    commands = Command.objects.select_related('group').prefetch_related(Prefetch(
+        'tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1)
 
 
 # Главная страница с фильтрацией по категориям
-class ConnectorPageByGroup(ListView):
+class ConnectorPageByGroup(DataMixin, ListView):
     template_name = 'website_app/main.html'
+    descr = "Плагин Connector"
     context_object_name = 'commands'
     allow_empty = False
 
@@ -40,24 +34,14 @@ class ConnectorPageByGroup(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context['title'] = 'ARO Group'
-        context['descr'] = """Плагин Connector - расширение для архитекторов и дизайнеров,
-                             добавляющее возможности в Autodesk Revit.
-                             Автоматизирует многие процессы и существенно сокращает время
-                             создания модели.
-                             Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                             версиями Autodesk Revit."""
         context['title_group'] = Group.objects.filter(slug=self.kwargs['group_slug']).get()
-        context['about'] = About.objects.all()
-        context['groups'] = Group.objects.all()
-        context['tags'] = Tag.objects.all()
         return context
 
 
 # Главная страница с фильтрацией по тегам
-class ConnectorPageByTag(ListView):
+class ConnectorPageByTag(DataMixin, ListView):
     template_name = 'website_app/main.html'
+    descr = "Плагин Connector"
     context_object_name = 'commands'
 
     def get_queryset(self):
@@ -68,18 +52,7 @@ class ConnectorPageByTag(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-
-        context['title'] = 'ARO Group'
-        context['descr'] = """Плагин Connector - расширение для архитекторов и дизайнеров,
-                                     добавляющее возможности в Autodesk Revit.
-                                     Автоматизирует многие процессы и существенно сокращает время
-                                     создания модели.
-                                     Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                                     версиями Autodesk Revit."""
         context['title_tag'] = Tag.objects.filter(slug=self.kwargs['tag_slug']).get()
-        context['about'] = About.objects.all()
-        context['groups'] = Group.objects.all()
-        context['tags'] = Tag.objects.all()
         return context
 
 
@@ -105,7 +78,8 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 
 
 # Страница консалтинга
-class ConsultingPage(View):
+class ConsultingPage(DataMixin, View):
+
     def get(self, request):
         form = ConsultFormModel()
         data = {'title': 'ARO Group',

@@ -1,0 +1,36 @@
+from website_app.models import About, Tag, Group
+
+
+class DataMixin:
+    title = None
+    descr = None
+    about = None
+    commands = None
+    tags = None
+    groups = None
+
+    extra_context = {}
+
+    def __init__(self):
+        if self.title not in self.extra_context:
+            self.extra_context['title'] = 'ARO Group'
+
+        if self.descr == "Плагин Connector":
+            self.extra_context['descr'] = """Плагин Connector - расширение для архитекторов и дизайнеров,
+                         добавляющее возможности в Autodesk Revit.
+                         Автоматизирует многие процессы и существенно сокращает время
+                         создания модели.
+                         Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
+                         версиями Autodesk Revit."""
+
+        if self.about not in self.extra_context:
+            self.extra_context['about'] = About.objects.all()
+
+        if self.commands:
+            self.extra_context['commands'] = self.commands
+
+        if self.tags not in self.extra_context:
+            self.extra_context['tags'] = Tag.objects.all()
+
+        if self.groups not in self.extra_context:
+            self.extra_context['groups'] = Group.objects.all()
