@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from .models import Command, About, Group, Tag, Consult
 from .forms import ConsultFormModel
 from django.views import View
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, FormView
 from django.views.generic import ListView
 
 from .utils import DataMixin
@@ -78,54 +78,18 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
 
 
 # Страница консалтинга
-class ConsultingPage(DataMixin, View):
+class ConsultingPage(DataMixin, FormView):
+    template_name = 'website_app/consulting.html'
+    descr = "BIM-консалтинг"
+    form_class = ConsultFormModel
+    success_url = reverse_lazy('connector')
 
-    def get(self, request):
-        form = ConsultFormModel()
-        data = {'title': 'ARO Group',
-                'descr': """BIM-консалтинг - это комплекс услуг по внедрению,
-                                        адаптации и оптимизации технологий информационного моделирования
-                                        (BIM) на всех этапах жизненного цикла строительного проекта.
-                                        Мы помогаем компаниям повысить эффективность работы,
-                                        сократить сроки проектирования и минимизировать ошибки
-                                        за счёт грамотного использования современных цифровых инструментов.""",
-                'about': About.objects.all(),
-                'commands': Command.objects.select_related('group').prefetch_related(
-                    Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
-                filter(is_published=1),
-                'tags': Tag.objects.all(),
-                'groups': Group.objects.all(),
-                'form': form, }
+    commands = Command.objects.select_related('group').prefetch_related(Prefetch(
+        'tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1)
 
-        return render(request, 'website_app/consulting.html', data)
-
-    def post(self, request):
-        form = ConsultFormModel(request.POST, request.FILES)
-        data = {'title': 'ARO Group',
-                'descr': """BIM-консалтинг - это комплекс услуг по внедрению,
-                                                адаптации и оптимизации технологий информационного моделирования
-                                                (BIM) на всех этапах жизненного цикла строительного проекта.
-                                                Мы помогаем компаниям повысить эффективность работы,
-                                                сократить сроки проектирования и минимизировать ошибки
-                                                за счёт грамотного использования современных цифровых инструментов.""",
-                'about': About.objects.all(),
-                'commands': Command.objects.select_related('group').prefetch_related(
-                    Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).
-                filter(is_published=1),
-                'tags': Tag.objects.all(),
-                'groups': Group.objects.all(),
-                'form': form, }
-
-        if form.is_valid():
-            print(form.cleaned_data)
-            print(request.FILES)
-            try:
-                Consult.objects.create(**form.cleaned_data)
-                return redirect("connector")
-            except:
-                form.add_error(None, form.errors)
-
-        return render(request, 'website_app/consulting.html', data)
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
 
 
 # Страница в случае отсутствия результата
