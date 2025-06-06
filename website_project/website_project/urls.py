@@ -16,13 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from website_app import urls
+
 from website_app.views import nof_found_page
 
-urlpatterns = [
+urlpatterns = {
     path('__debug__/', include('debug_toolbar.urls')),
     path('connector/admin/', admin.site.urls),
-    path('', include(urls)), ]
+    path('', include('website_app.urls')),
+    path('users/', include('website_users.urls', namespace='users')), }
 
 admin.site.site_header = 'Администрирование сайта'
 admin.site.index_title = 'Команды плагина ARO'
