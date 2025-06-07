@@ -19,6 +19,9 @@ from django.urls import path, include
 
 from website_app.views import nof_found_page
 
+\
+
+
 urlpatterns = {
     path('__debug__/', include('debug_toolbar.urls')),
     path('connector/admin/', admin.site.urls),
