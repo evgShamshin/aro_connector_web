@@ -133,6 +133,7 @@ a:active {
     justify-content: left; /* Центрирует иконку и текст внутри блока */
     gap: 8px; /* Расстояние между иконкой и текстом */
     margin-left: 5px;
+    margin-right: 10px; /* Регулируйте значение по необходимости */
 }
 
 /* Удаление лишних отступов у элементов */
@@ -323,6 +324,8 @@ a:active {
     display: flex;
     justify-content: flex-end; /* Выравниваем содержимое по правому краю */
     width: 70.5%;
+    margin-top: -21px;
+    gap: 5px
 }
 
 /* Поля ввода в Consulting */
