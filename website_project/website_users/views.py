@@ -21,18 +21,18 @@ def login_user(request):
             'tags': Tag.objects.all(), }
 
     if request.method == 'POST':
-        form = LoginUserForm(request.POST)
-        if form.is_valid():
-            cd = form.cleaned_data
+        data['form'] = LoginUserForm(request.POST)
+        if data['form'].is_valid():
+            cd = data['form'].cleaned_data
             user = authenticate(request, username=cd['username'],
                                 password=cd['password'])
             if user and user.is_active:
                 login(request, user)
                 return HttpResponse()
     else:
-        form = LoginUserForm()
+        data['form'] = LoginUserForm()
 
-    return render(request, 'users/login.html', context={'form': form})
+    return render(request, 'users/login.html', data)
 
 
 def logout_user(request):
