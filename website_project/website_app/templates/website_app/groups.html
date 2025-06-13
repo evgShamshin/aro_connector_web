@@ -1,0 +1,3 @@
+{% for group in groups %}
+    <li><a href="{{ group.get_absolute_url }}">{{group.title}}</a></li>
+{% endfor %}
