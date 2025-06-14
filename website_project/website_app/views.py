@@ -1,11 +1,10 @@
 from django.db.models import Prefetch
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 from django.urls import reverse_lazy
 
-from .models import Command, About, Group, Tag, Consult
+from .models import Command, About, Group, Tag
 from .forms import ConsultFormModel
-from django.views import View
 from django.views.generic import TemplateView, FormView
 from django.views.generic import ListView
 
@@ -65,9 +64,6 @@ def connector_commands_page(request: HttpRequest, article_slug) -> HttpResponse:
                                 создания модели.
                                 Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
                                 версиями Autodesk Revit.""",
-            'about': About.objects.all(),
-            'groups': Group.objects.all(),
-            'tags': Tag.objects.all(),
             'obj': get_object_or_404(Command, slug=article_slug),
             'commands': Command.objects.select_related('group').prefetch_related(
                 Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).

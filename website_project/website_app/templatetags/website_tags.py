@@ -1,16 +1,23 @@
 from django import template
-from django.db.models import Count
 
-from website_app.models import Group, Tag
+from website_app.models import Group, Tag, About
 
 register = template.Library()
 
 
-@register.inclusion_tag('website_app/groups.html')
-def show_groups(cat_selected=0):
-    groups = Group.objects.annotate(total=Count("posts")).filter(total__gt=0)
-    return {'groups': groups, 'cat_selected': cat_selected}
+@register.simple_tag()
+def show_groups():
+    groups = Group.objects.all()
+    return groups
 
-# @register.inclusion_tag('women/list_tags.html')
-# def show_all_tags():
-#     return {'tags': TagPost.objects.annotate(total=Count("tags")).filter(total__gt=0)}
+
+@register.simple_tag()
+def show_tags():
+    tags = Tag.objects.all()
+    return tags
+
+
+@register.simple_tag()
+def show_abouts():
+    abouts = About.objects.all()
+    return abouts

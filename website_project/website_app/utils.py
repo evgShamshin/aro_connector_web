@@ -31,14 +31,5 @@ class DataMixin:
                                         сократить сроки проектирования и минимизировать ошибки
                                         за счёт грамотного использования современных цифровых инструментов."""
 
-        if self.about not in self.extra_context:
-            self.extra_context['about'] = About.objects.all()
-
         if self.commands:
             self.extra_context['commands'] = self.commands
-
-        if self.tags not in self.extra_context:
-            self.extra_context['tags'] = Tag.objects.all()
-
-        if self.groups not in self.extra_context:
-            self.extra_context['groups'] = Group.objects.all()

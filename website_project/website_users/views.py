@@ -15,10 +15,7 @@ def login_user(request):
                                 Автоматизирует многие процессы и существенно сокращает время
                                 создания модели.
                                 Плагин совместим с 2019, 2020, 2021, 2022, 2023, 2024, 2025
-                                версиями Autodesk Revit.""",
-            'about': About.objects.all(),
-            'groups': Group.objects.all(),
-            'tags': Tag.objects.all(), }
+                                версиями Autodesk Revit.""", }
 
     if request.method == 'POST':
         data['form'] = LoginUserForm(request.POST)

@@ -14,6 +14,7 @@
 <body>
 <div class="header" style="display: flex;">
     <a href="https://www.arogroup.ru/" class="logo"></a>
+    {% show_abouts as about %}
     {% for a in about %}
         <div class="content_menu">
             {% if "http" in a.link %}
@@ -27,9 +28,9 @@
 <div class="header-container">
     <div class="group_menu">
         <a href="{% url 'connector' %}">Все категории |</a>
-        {% show_groups as grgr %}
-        {% for gr in grgr %}
-            <a href="{% url 'connector_group' gr.slug %}">{{ gr.title }}</a>
+        {% show_groups as groups %}
+        {% for group in groups %}
+            <a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a>
             {% if not forloop.last %} | {% endif %}
         {% endfor %}
     </div>
@@ -44,6 +45,7 @@
 
 
 <div class="tag_menu_container">
+    {% show_tags as tags %}
     {% for tag in tags %}
         <div class="tag_menu_margin_top_5px">
             <a href="{% url 'connector_tag' tag.slug %}">
