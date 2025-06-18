@@ -37,7 +37,8 @@
 
     <div class="cost-container">
         {% if not user.is_authenticated %}
-            <img src="{% static 'website_app/images/Login_16.svg' %}" alt="my_img">
+            <a href="{% url 'users:login' %}">Регистрация</a>
+            |<img src="{% static 'website_app/images/Login_16.svg' %}" alt="my_img">
             <div class="cost_ext">
             <a href="{% url 'users:login' %}">Войти</a>
         {% else %}
