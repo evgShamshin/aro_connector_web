@@ -350,6 +350,8 @@ a:active {
 form input,
 form select,
 form textarea {
-    width: 300px;  /* Фиксированная ширина */
+    width: 300px; /* Фиксированная ширина */
     box-sizing: border-box; /* Учитывает padding и border в ширину */
+    display: flex; /* Включаем flex-контейнер */
+    align-items: center;
 }
