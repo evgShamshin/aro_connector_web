@@ -35,3 +35,16 @@ class RegisterUserForm(forms.ModelForm):
             if get_user_model().objects.filter(email=email).exists():
                 raise forms.ValidationError("Такой E-mail уже существует!")
             return email
+
+
+class LectorRegisterForm(forms.ModelForm):
+    username = forms.CharField(label="Логин", max_length=50)
+    password = forms.CharField(label="Пароль", max_length=30, widget=forms.PasswordInput())
+    password2 = forms.CharField(label="Повтор пароля", max_length=30, widget=forms.PasswordInput())
+
+    class Meta:
+        model = get_user_model()
+        fields = ["username", "email", "password", "password2"]
+        labels = {
+            'email': 'E-Mail'
+        }
