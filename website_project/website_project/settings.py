@@ -141,3 +141,8 @@ STATICFILES_DIRS = [
 ]
 
 LOGIN_REDIRECT_URL = 'connector'
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "website_users.authenticate.MyBackend"
+]

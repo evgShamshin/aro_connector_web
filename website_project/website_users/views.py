@@ -1,9 +1,12 @@
-from django.contrib.auth import logout
+from django.contrib.auth import logout, get_user_model
 from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.views import LoginView, PasswordChangeView, PasswordChangeDoneView
 from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, UpdateView
 from website_app.utils import DataMixin
-from website_users.forms import RegisterUserForm
+from website_users.forms import RegisterUserForm, ProfileUserForm, PasswordChangeUserForm
 
 
 class LoginPageUser(DataMixin, LoginView):
@@ -17,14 +20,33 @@ def logout_user(request):
     return redirect('connector')
 
 
-def register_user(request):
-    if request.method == 'POST':
-        form = RegisterUserForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_password(form.cleaned_data['password1'])
-            user.save()
-            return render(request, 'users/register_done.html')
-    else:
-        form = RegisterUserForm()
-        return render(request, 'users/register.html', {'form': form})
+def register_user_done(request):
+    return render(request, 'users/register_done.html')
+
+
+class RegisterPageUser(DataMixin, CreateView):
+    form_class = RegisterUserForm
+    template_name = 'users/register.html'
+    success_url = reverse_lazy('users:register_done')
+
+
+class ProfilePageUser(DataMixin, LoginRequiredMixin, UpdateView):
+    model = get_user_model()
+    template_name = 'users/profile.html'
+    form_class = ProfileUserForm
+
+    def get_success_url(self):
+        return reverse_lazy('users:profile')
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+
+class PasswordChangePageUser(DataMixin, PasswordChangeView):
+    form_class = PasswordChangeUserForm
+    success_url = reverse_lazy("password_reset_done")
+    template_name = "users/password_reset.html"
+
+
+class PasswordChangeDonePageUser(DataMixin, PasswordChangeDoneView):
+    template_name = "users/password_reset_done.html"
