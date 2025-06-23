@@ -40,13 +40,3 @@ class ProfilePageUser(DataMixin, LoginRequiredMixin, UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
-
-
-class PasswordChangePageUser(DataMixin, PasswordChangeView):
-    form_class = PasswordChangeUserForm
-    success_url = reverse_lazy("password_reset_done")
-    template_name = "users/password_reset.html"
-
-
-class PasswordChangeDonePageUser(DataMixin, PasswordChangeDoneView):
-    template_name = "users/password_reset_done.html"
