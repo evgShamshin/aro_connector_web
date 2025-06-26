@@ -21,6 +21,7 @@ class ConsultFormModel(forms.ModelForm):
             'date': forms.DateInput(attrs={'type': 'date', 'format': '%d.%m.%Y',
                                            'class': 'form-label'}),
         }
+
         labels = {'name': 'Имя',
                   'surname': 'Фамилия',
                   'email': 'Электронная почта',
