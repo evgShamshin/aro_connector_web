@@ -1,5 +1,3 @@
-import string
-
 from django import forms
 from .models import Consult
 
