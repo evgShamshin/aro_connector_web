@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'website_app.apps.WebsiteAppConfig',
     'website_users.apps.WebsiteUsersConfig',
     'debug_toolbar',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -143,6 +144,7 @@ STATICFILES_DIRS = [
 LOGIN_REDIRECT_URL = 'connector'
 
 AUTHENTICATION_BACKENDS = [
+    "social_core.backends.github.GithubOAuth2",
     "django.contrib.auth.backends.ModelBackend",
     "website_users.authenticate.MyBackend"
 ]

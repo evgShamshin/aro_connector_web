@@ -1,3 +1,5 @@
+from xml.etree.ElementInclude import include
+
 from django.shortcuts import redirect
 from django.urls import path
 from . import views
@@ -5,6 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+                  path("", include('social_django.urls', namespace="social")),
                   path('', lambda request: redirect('/connector/')),
                   path('connector/', views.ConnectorPage.as_view(), name='connector'),
                   path('consulting/', views.ConsultingPage.as_view(), name='consulting'),
