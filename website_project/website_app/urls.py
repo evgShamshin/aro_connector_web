@@ -7,7 +7,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-                  path("", include('social_django.urls', namespace="social")),
+                  # path("", include('social_django.urls', namespace="social")),
                   path('', lambda request: redirect('/connector/')),
                   path('connector/', views.ConnectorPage.as_view(), name='connector'),
                   path('consulting/', views.ConsultingPage.as_view(), name='consulting'),
