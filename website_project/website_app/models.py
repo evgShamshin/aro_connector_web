@@ -16,8 +16,8 @@ class Command(models.Model):
 
     title = models.CharField(max_length=255, verbose_name='Команда')
     description = models.TextField(blank=True, verbose_name='Описание')
-    slug = models.SlugField(blank=True, verbose_name='Slug')
-    gif = models.ImageField(upload_to='media/website_app/gif', verbose_name='GIF-Изображение', blank=True, null=True)
+    slug = models.SlugField(max_length=255, blank=True, verbose_name='Slug')
+    gif = models.ImageField(max_length=255, upload_to='media/website_app/gif', verbose_name='GIF-Изображение', blank=True, null=True)
     confluence_link = models.URLField(blank=True, null=True, verbose_name='Confluence')
     rutube_link = models.URLField(blank=True, null=True, verbose_name='Rutube')
     vkontakte_link = models.URLField(blank=True, null=True, verbose_name='Вконтакте')
@@ -73,8 +73,8 @@ class About(models.Model):
 
 class User(models.Model):
     slug = models.SlugField(unique=True, max_length=255)
-    username = models.CharField(unique=True, max_length=100)
-    password = models.CharField(max_length=100)
+    username = models.CharField(unique=True, max_length=255)
+    password = models.CharField(max_length=255)
     email = models.EmailField(blank=True)
     is_staff = models.BooleanField(default=False)
 
