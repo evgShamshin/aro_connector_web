@@ -50,7 +50,11 @@ INSTALLED_APPS = [
     'website_users.apps.WebsiteUsersConfig',
     'debug_toolbar',
     'social_django',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'debug_toolbar.middleware.DebugToolbarMiddleware',

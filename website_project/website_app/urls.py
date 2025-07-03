@@ -1,10 +1,14 @@
-from xml.etree.ElementInclude import include
-
 from django.shortcuts import redirect
 from django.urls import path
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import PostSitemap
+
+sitemaps = {
+    'posts': PostSitemap
+}
 
 urlpatterns = [
                   # path("", include('social_django.urls', namespace="social")),
@@ -16,4 +20,5 @@ urlpatterns = [
                   path('connector/group/<slug:group_slug>/', views.ConnectorPageByGroup.as_view(),
                        name='connector_group'),
                   path('connector/tag/<slug:tag_slug>/', views.ConnectorPageByTag.as_view(), name='connector_tag'),
+                  path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name="django.contrib.sitemaps.views.sitemap"),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
