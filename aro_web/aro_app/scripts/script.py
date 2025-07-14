@@ -10,7 +10,7 @@ from django.conf import settings
 sys.path.append(os.path.dirname(os.path.abspath(__file__)) + "/..")
 
 # Указываем Django, где настройки
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "aro_project.settings")  # Укажи правильное имя проекта
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "aro_web.settings")  # Укажи правильное имя проекта
 
 # Инициализируем Django
 django.setup()
