@@ -1405,19 +1405,19 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 1,
   "fields": {
     "title": "Замена размеров",
     "description": "Плагин заменяет все размеры Revit в активном виде на пользовательские семейства.\nЕсли семейства отсутствуют в проекте, плагин способен загрузить встроенное семейство \"АРО_Размер\" в проект для корректной работы.",
     "slug": "ReplaceDimsToAnnotateFams",
-    "gif": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\gif\\ReplaceDimsToAnnotateFams.gif",
+    "gif": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\gif\\ReplaceDimsToAnnotateFams.gif",
     "confluence_link": null,
     "rutube_link": null,
     "vkontakte_link": null,
     "cost": "500.00",
     "is_published": 1,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\ReplaceDimsToAnnotateFams_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\ReplaceDimsToAnnotateFams_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1425,7 +1425,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 2,
   "fields": {
     "title": "Выгрузка координат",
@@ -1437,7 +1437,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\LocationSitesExport_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\LocationSitesExport_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1445,7 +1445,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 3,
   "fields": {
     "title": "Суперфильтр",
@@ -1457,7 +1457,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 1,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\CherryPicker_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\CherryPicker_32.svg",
     "group": 1,
     "tag": [
       1
@@ -1465,7 +1465,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 4,
   "fields": {
     "title": "Ключи исключения",
@@ -1477,7 +1477,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\ViewExceptionKeys_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\ViewExceptionKeys_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1485,7 +1485,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 5,
   "fields": {
     "title": "Маркировка элементов",
@@ -1497,7 +1497,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\ElementIndexer_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\ElementIndexer_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1505,7 +1505,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 6,
   "fields": {
     "title": "Плинтус по помещению",
@@ -1517,7 +1517,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\SlabEdgesByRoom_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\SlabEdgesByRoom_32.svg",
     "group": 1,
     "tag": [
       1
@@ -1525,7 +1525,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 7,
   "fields": {
     "title": "Notion Sync",
@@ -1537,7 +1537,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\NotionSync_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\NotionSync_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1545,7 +1545,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 8,
   "fields": {
     "title": "Потолок по помещению",
@@ -1557,7 +1557,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\CeilingByRoom_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\CeilingByRoom_32.svg",
     "group": 1,
     "tag": [
       1
@@ -1565,7 +1565,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 9,
   "fields": {
     "title": "Запись параметров",
@@ -1577,7 +1577,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\SetParameter_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\SetParameter_32.svg",
     "group": 1,
     "tag": [
       2
@@ -1585,7 +1585,7 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 10,
   "fields": {
     "title": "Развертки помещений",
@@ -1597,7 +1597,7 @@
     "vkontakte_link": null,
     "cost": null,
     "is_published": 0,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\FasadeUnfolder_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\FasadeUnfolder_32.svg",
     "group": 1,
     "tag": [
       1
@@ -1605,19 +1605,19 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 11,
   "fields": {
     "title": "Обновить из солида",
     "description": "Плагин переносит значения параметров солида в основную модель из связанного файла.\n\nПредусмотрены следующие настройки:\n\nВыбор связанного файла.\nРабота с фильтрами обрабатываемых объектов.\nРабота с координатами солида.\nСистема логирования.\nСолид (Solid) - трёхмерный твердотельный объект, который покрывает обрабатываемую модель и содержит общую информацию об объектах.",
     "slug": "SetValueParameterByLinkElement",
-    "gif": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\gif\\ReplaceDimsToAnnotateFams.gif",
+    "gif": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\gif\\ReplaceDimsToAnnotateFams.gif",
     "confluence_link": null,
     "rutube_link": null,
     "vkontakte_link": null,
     "cost": "900.00",
     "is_published": 1,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\SetValueParameterByLinkElement_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\SetValueParameterByLinkElement_32.svg",
     "group": 2,
     "tag": [
       2
@@ -1625,19 +1625,19 @@
   }
 },
 {
-  "model": "website_app.command",
+  "model": "aro_app.command",
   "pk": 12,
   "fields": {
     "title": "Выгрузчик",
     "description": "Плагин выгружает информацию в базу данных для анализа модели",
     "slug": "Unloader",
-    "gif": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\gif\\ReplaceDimsToAnnotateFams.gif",
+    "gif": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\gif\\ReplaceDimsToAnnotateFams.gif",
     "confluence_link": null,
     "rutube_link": null,
     "vkontakte_link": null,
     "cost": "2500.00",
     "is_published": 1,
-    "image": "C:\\Users\\evg_shamshin\\Documents\\py_projects\\django_balakirev\\website_project\\media\\website_app\\image\\Unloader_32.svg",
+    "image": "C:\\Users\\evg_shamshin\\Documents\\!_py_projects\\aro_connector_web\\aro_web\\media\\aro_app\\image\\Unloader_32.svg",
     "group": 3,
     "tag": [
       2
@@ -1645,7 +1645,7 @@
   }
 },
 {
-  "model": "website_app.group",
+  "model": "aro_app.group",
   "pk": 1,
   "fields": {
     "title": "Общие",
@@ -1653,7 +1653,7 @@
   }
 },
 {
-  "model": "website_app.group",
+  "model": "aro_app.group",
   "pk": 2,
   "fields": {
     "title": "Параметры",
@@ -1661,7 +1661,7 @@
   }
 },
 {
-  "model": "website_app.group",
+  "model": "aro_app.group",
   "pk": 3,
   "fields": {
     "title": "ARO Tools",
@@ -1669,7 +1669,7 @@
   }
 },
 {
-  "model": "website_app.tag",
+  "model": "aro_app.tag",
   "pk": 1,
   "fields": {
     "title": "Бесплатно",
@@ -1677,7 +1677,7 @@
   }
 },
 {
-  "model": "website_app.tag",
+  "model": "aro_app.tag",
   "pk": 2,
   "fields": {
     "title": "Платно",
@@ -1685,7 +1685,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 1,
   "fields": {
     "title": "BIM",
@@ -1693,7 +1693,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 2,
   "fields": {
     "title": "IT",
@@ -1701,7 +1701,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 3,
   "fields": {
     "title": "Design",
@@ -1709,7 +1709,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 4,
   "fields": {
     "title": "Projects",
@@ -1717,7 +1717,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 5,
   "fields": {
     "title": "Connector",
@@ -1725,7 +1725,7 @@
   }
 },
 {
-  "model": "website_app.about",
+  "model": "aro_app.about",
   "pk": 6,
   "fields": {
     "title": "Consulting",
