@@ -2,56 +2,73 @@ from django.db.models import Prefetch
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpRequest, HttpResponseNotFound
 from django.urls import reverse_lazy
+from django.views.generic import FormView, ListView
 
-from .models import Command, About, Group, Tag
+from .models import Command, Group, Tag
 from .forms import ConsultFormModel
-from django.views.generic import TemplateView, FormView
-from django.views.generic import ListView
-
 from .utils import DataMixin
 
 
 # Главная страница сайта
-class ConnectorPage(DataMixin, TemplateView):
+class ConnectorPage(DataMixin, ListView):
     template_name = 'aro_app/main.html'
+    model = Command
+    context_object_name = 'commands'
     descr = "Плагин Connector"
-    commands = Command.objects.select_related('group').prefetch_related(Prefetch(
-        'tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1)
+
+    def get_queryset(self):
+        return Command.objects.filter(is_published=1).select_related('group').prefetch_related(
+            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
+        )
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = "Все команды"
+        return context
 
 
 # Главная страница с фильтрацией по категориям
 class ConnectorPageByGroup(DataMixin, ListView):
     template_name = 'aro_app/main.html'
-    descr = "Плагин Connector"
+    model = Command
     context_object_name = 'commands'
+    descr = "Плагин Connector"
     allow_empty = False
 
     def get_queryset(self):
         return Command.objects.filter(
-            group=get_object_or_404(Group, slug=self.kwargs['group_slug'])).select_related('group').prefetch_related(
-            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')).filter(is_published=1)
+            group=get_object_or_404(Group, slug=self.kwargs['group_slug']),
+            is_published=1
+        ).select_related('group').prefetch_related(
+            Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
+        )
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title_group'] = Group.objects.filter(slug=self.kwargs['group_slug']).get()
+        context['title_group'] = get_object_or_404(Group, slug=self.kwargs['group_slug'])
+        context['title'] = f"Команды: {context['title_group'].title}"
         return context
 
 
 # Главная страница с фильтрацией по тегам
 class ConnectorPageByTag(DataMixin, ListView):
     template_name = 'aro_app/main.html'
-    descr = "Плагин Connector"
+    model = Command
     context_object_name = 'commands'
+    descr = "Плагин Connector"
 
     def get_queryset(self):
-        return Command.objects.filter(tag=get_object_or_404(Tag, slug=self.kwargs['tag_slug'])).select_related(
-            'group').prefetch_related(
+        return Command.objects.filter(
+            tag=get_object_or_404(Tag, slug=self.kwargs['tag_slug']),
+            is_published=1
+        ).select_related('group').prefetch_related(
             Prefetch('tag', queryset=Tag.objects.all()[:1], to_attr='first_tag')
-        ).filter(is_published=1)
+        )
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+    def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title_tag'] = Tag.objects.filter(slug=self.kwargs['tag_slug']).get()
+        context['title_tag'] = get_object_or_404(Tag, slug=self.kwargs['tag_slug'])
+        context['title'] = f"Тег: {context['title_tag'].name}"
         return context
 
 
