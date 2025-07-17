@@ -2,22 +2,25 @@
 {% load static %}
 
 {% block content %}
-    <div class="descr_ext">
-        <h3>{{ descr }}</div>
-    <div class="command">
+    <div class="page-container">
+        <div class="descr_ext">
+            <h3>{{ descr }}</div>
+        <div class="command">
 
-        <h1>Оставить заявку</h1>
-        <hr>
-        <form action="" method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-error">{{ form.non_field_errors }}</div>
-            {% for f in form %}
-                <p><label class="form-label" for="{{ f.id_for_label }}">
-                    {{ f.label }}</label>{{ f }}</p>
-                <div class="form_error">{{ f.errors }}</div>
-            {% endfor %}
+            <h1>Оставить заявку</h1>
+            <hr>
 
-            <button type="submit" class="form-button">Отправить</button>
 
-        </form>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-error">{{ form.non_field_errors }}</div>
+                {% for f in form %}
+                    <p><label class="form-label" for="{{ f.id_for_label }}">
+                        {{ f.label }}</label>{{ f }}</p>
+                    <div class="form_error">{{ f.errors }}</div>
+                {% endfor %}
+
+                <button type="submit" class="form-button">Отправить</button>
+
+            </form>
 {% endblock %}

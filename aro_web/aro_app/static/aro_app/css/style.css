@@ -1,13 +1,18 @@
 /* Все что находится внутри html и body */
 html, body {
     font-family: 'Segoe UI';
-    margin-left: 115px;
+    margin: 0;
     padding: 0;
     width: 100%;
-    max-width: 100%;
     color: #666;
-    overflow-x: hidden; /* Блокирует горизонтальный скролл */
-    overflow-y: scroll;
+}
+
+/* Основной контейнер страницы */
+.page-container {
+    width: 130%;
+    max-width: 1800px; /* Максимальная ширина контента */
+    padding: 0 200px; /* Минимальные отступы по бокам */
+    box-sizing: border-box;
 }
 
 /* Заголовки */
@@ -18,11 +23,6 @@ h1 {
 a {
     color: #000000;
     text-decoration: none;
-}
-
-hr {
-    margin-left: 0px;
-    width: 70.5%;
 }
 
 /* Гиперссылки при наведении курсора */
@@ -38,13 +38,15 @@ a:active {
 /* Полоска сверху */
 .header {
     position: fixed;
-    margin-left: -230px;
-    margin-top: -8px;
+    top: 0;
+    left: 0;
+    right: 0; /* Растягиваем на всю ширину */
     background: #e5e5e5;
     height: 100px;
-    width: 100%; /* Шапка займёт всю ширину окна браузера */
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Тень для эффекта */
-    z-index: 1; /* Выставляем выше других элементов */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    padding: 0 20px; /* Адаптивные отступы */
+    box-sizing: border-box;
 }
 
 /* Логотип в шапке страницы */
@@ -106,7 +108,7 @@ a:active {
     padding-top: 110px;
     font-size: inherit;
     display: inline-block;
-    padding-left: 5px;
+    padding-left: 0; /* Убираем фиксированный отступ */
 }
 
 /* Содержимое набора команд на главной странице */
@@ -162,6 +164,13 @@ a:active {
     border-bottom: 1px solid black;
 }
 
+hr {
+    content: "";
+    position: absolute;
+    width: 65.5%; /* Длина линии */
+    margin-top: 2px;
+}
+
 /* Изображение содержимого набора команд */
 .image {
     position: relative;
@@ -172,8 +181,9 @@ a:active {
 /* GIF набора команд */
 /* Стили для изображения */
 .gif {
-    width: 550px;
-    flex-shrink: 0; /* Запрещаем уменьшение */
+    max-width: 100%;
+    width: auto;
+    height: auto;
 }
 
 .gif img {
@@ -206,7 +216,8 @@ a:active {
 /* Команда */
 .command h2,
 .command a {
-    width: 70.5%;
+    width: 100%;
+    max-width: 800px; /* или другое подходящее значение */
     background-color: #e5e5e5;
     margin-bottom: -5px;
     color: #666;
@@ -239,8 +250,8 @@ a:active {
 /* Контейнер тега */
 .tag_menu_container {
     display: flex;
-    flex-wrap: nowrap; /* запрет на перенос */
-    gap: 10px; /* расстояние между кнопками */
+    flex-wrap: wrap; /* Разрешаем перенос на маленьких экранах */
+    gap: 10px;
 }
 
 /* Тег margin_top_5px */
@@ -354,4 +365,30 @@ form textarea {
     box-sizing: border-box; /* Учитывает padding и border в ширину */
     display: flex; /* Включаем flex-контейнер */
     align-items: center;
+}
+
+/* Адаптация для маленьких экранов */
+@media (max-width: 768px) {
+    .page-container {
+        padding: 0 15px;
+    }
+
+    .group_menu {
+        padding-top: 80px;
+    }
+
+    .command_menu::after {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-container {
+        padding: 0 10px;
+    }
+
+    .inline-icon-block {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

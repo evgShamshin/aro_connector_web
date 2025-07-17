@@ -1,45 +1,46 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="descr_ext">
-        <h3>{{ descr }}</div>
-    <div class="command">
 
-        {% if title_group %}
-            <h1>{{ title_group }}</h1>
-        {% else %}
-            <h1>Все категории</h1>
-        {% endif %}
-    </div>
+    <div class="page-container">
+        <div class="descr_ext">
+            <h3>{{ descr }}</div>
+        <div class="command">
+            <hr/>
+            {% if title_group %}
+                <h1>{{ title_group }}</h1>
+            {% else %}
+                <h1>Все категории</h1>
+            {% endif %}
+        </div>
 
-    <hr>
 
-    {% for command in commands %}
-        <div class="command_menu">
-            {% with group=command.group %}  <!-- Кешируем группу в переменной -->
-                <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
-            {% endwith %}
-            <div class="inline-icon-block">
-                <a href='{% url 'connector_commands' article_slug=command.slug %}'>
-                    {{ command.title }}
-                </a>
-                <img src="{{ command.image.url }}" alt="my_img">
-            </div>
-            <div class="descr_line_1"><h3>{{ command.description }}</h3></div>
+        {% for command in commands %}
+            <div class="command_menu">
+                {% with group=command.group %}  <!-- Кешируем группу в переменной -->
+                    <h2><a href="{% url 'connector_group' group.slug %}">{{ group.title }}</a></h2>
+                {% endwith %}
+                <div class="inline-icon-block">
+                    <a href='{% url 'connector_commands' article_slug=command.slug %}'>
+                        {{ command.title }}
+                    </a>
+                    <img src="{{ command.image.url }}" alt="my_img">
+                </div>
+                <div class="descr_line_1"><h3>{{ command.description }}</h3></div>
 
-            <div class="tags-container">
-                {% if command.first_tag %}
-                    <div class="tag_menu_margin_top_65px">
+                <div class="tags-container">
+                    {% if command.first_tag %}
+                        <div class="tag_menu_margin_top_65px">
                     <span class="tag">
                         <a href="{% url 'connector_tag' command.first_tag.0.slug %}">
                             {{ command.first_tag.0.title }}
                         </a>
                     </span>
-                    </div>
-                {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+
             </div>
-
-        </div>
-    {% endfor %}
-
+        {% endfor %}
+    </div>
 {% endblock %}
