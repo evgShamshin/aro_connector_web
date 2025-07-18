@@ -5,13 +5,15 @@
     <div class="page-container">
         <div class="descr_ext">
             <h3>{{ descr }}</div>
-        <div class="command">
-            <hr/>
-            {% if title_group %}
-                <h1>{{ title_group }}</h1>
-            {% else %}
-                <h1>Все категории</h1>
-            {% endif %}
+
+        <div class="line_hr">
+            <div class="command">
+                {% if title_group %}
+                    <h1>{{ title_group }}</h1>
+                {% else %}
+                    <h1>Все категории</h1>
+                {% endif %}
+            </div>
         </div>
 
 

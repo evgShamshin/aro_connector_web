@@ -7,12 +7,13 @@
             <h3>{{ descr }}
         </div>
 
-        <div class="command">
-            <h1>{{ obj.group.title }}</h1>
-            <hr>
-            <h1>{{ obj.title }}
-                <div class="image"><img src="{{ obj.image.url }} "></div>
-            </h1>
+        <div class="line_hr">
+            <div class="command">
+                <h1>{{ obj.group.title }}</h1>
+                <h1>{{ obj.title }}
+                    <div class="image"><img src="{{ obj.image.url }} "></div>
+                </h1>
+            </div>
 
             <div style="white-space: nowrap; margin-top: -10px">
                 <div class="tags-container" style="display: inline-block;
@@ -43,12 +44,15 @@
 
             <div class="command">
                 <div class="content-wrapper">
-                    <div class="gif"><img src="{{ obj.gif.url }}" alt="Демонстрация"></div>
+                    <div class="gif">
+                        <img src="{{ obj.gif.url }}" alt="Демонстрация">
+                    </div>
                     <div class="description">
                         <h4>{{ obj.description }}</h4>
                     </div>
                 </div>
             </div>
+
 
             <div class="cost-container">
                 <div class="cost_ext">

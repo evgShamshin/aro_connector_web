@@ -164,11 +164,29 @@ a:active {
     border-bottom: 1px solid black;
 }
 
-hr {
+/* Костыль */
+.line_hr {
+    height: 60px;
+    position: relative;
+    width: 70.5%;
+
+
+    display: flex; /* превращаем в flex-контейнер */
+    flex-direction: column; /* размещаем элементы сверху вниз */
+    justify-content: flex-start; /* центрируем по вертикали */
+    text-align: left; /* центрируем текст */
+
+    padding-left: 5px;
+    box-sizing: border-box;
+}
+
+/* Линия под костылем */
+.line_hr::after {
     content: "";
     position: absolute;
-    width: 65.5%; /* Длина линии */
-    margin-top: 2px;
+    bottom: 10px; /* Опускаем вниз */
+    width: 99.5%; /* Длина линии */
+    border-bottom: 1px solid black;
 }
 
 /* Изображение содержимого набора команд */
@@ -181,15 +199,16 @@ hr {
 /* GIF набора команд */
 /* Стили для изображения */
 .gif {
-    max-width: 100%;
-    width: auto;
-    height: auto;
+    float: left;
+    width: 45%; /* или конкретное значение в px */
+    max-width: 500px;
+    margin: 0 20px 20px 0;
 }
 
 .gif img {
-    display: block;
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    display: block;
 }
 
 
@@ -197,14 +216,13 @@ hr {
 .command {
     margin-top: 10px;
     width: 100%;
-    max-width: 1200px; /* или нужная вам ширина */
+    max-width: 1200px;
 }
 
-/* Обертка для картинки и текста */
+/* Обертка для контента */
 .content-wrapper {
-    display: flex; /* Включаем flex-раскладку */
-    align-items: flex-start; /* Выравниваем элементы по верху */
-    gap: 20px; /* Отступ между картинкой и текстом */
+    display: flow-root; /* Создает новый контекст форматирования */
+    width: 100%;
 }
 
 /* Команда */
@@ -229,15 +247,16 @@ hr {
     width: 44%;
 }
 
-/* Стили для текстового блока */
+/* Описание команды */
 .description {
-    flex-grow: 1; /* Занимает все доступное пространство */
+    overflow: hidden; /* Для обтекания float */
+    text-align: justify;
 }
 
 .description h4 {
     margin: 0;
     padding: 0;
-    width: 40.5%;
+    width: auto;
 }
 
 /* Полоса команды */
@@ -391,4 +410,47 @@ form textarea {
         flex-direction: column;
         align-items: flex-start;
     }
+}
+
+
+/* Основной контейнер команды */
+.command {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Обертка для контента */
+.content-wrapper {
+    display: flow-root; /* Лучшая альтернатива для clearfix */
+    width: 100%;
+}
+
+/* Стили для GIF */
+.gif {
+    float: left;
+    width: 45%;
+    max-width: 500px;
+    margin: 0 20px 20px 0;
+    shape-outside: margin-box;
+}
+
+.gif img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Описание команды */
+.description {
+    display: block;
+    text-align: justify;
+    padding: 0 5px;
+}
+
+.description h4 {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    line-height: 1.5;
 }
