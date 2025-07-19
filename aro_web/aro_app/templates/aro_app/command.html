@@ -4,55 +4,52 @@
 {% block content %}
     <div class="page-container">
         <div class="descr_ext">
-            <h3>{{ descr }}
+            <h3>{{ descr }}</h3>
         </div>
 
         <div class="line_hr">
             <div class="command">
                 <h1>{{ obj.group.title }}</h1>
                 <h1>{{ obj.title }}
-                    <div class="image"><img src="{{ obj.image.url }} "></div>
+                    <div class="image"><img src="{{ obj.image.url }}"></div>
                 </h1>
             </div>
 
             <div style="white-space: nowrap; margin-top: -10px">
-                <div class="tags-container" style="display: inline-block;
-            vertical-align: middle;">
+                <div class="tags-container" style="display: inline-block; vertical-align: middle;">
                     <div class="tag_menu_margin_top_5px">
-            <span class="tag">
-                <a href="{% url 'connector_tag' commands.first.1 %}">
-                    {{ commands.first.0 }}
-                </a>
-            </span>
+                        <span class="tag">
+                            <a href="{% url 'connector_tag' commands.first.1 %}">
+                                {{ commands.first.0 }}
+                            </a>
+                        </span>
                     </div>
                 </div>
-                <a href="{{ obj.link }}" class="confluence"
-                   style=" width: 16px; background: white">
+                <a href="{{ obj.link }}" class="confluence" style="width: 16px; background: white">
                     <div class="confluence"></div>
                 </a>
 
-                <a href="{{ obj.link }}" class="rutube"
-                   style=" width: 16px; background: white">
+                <a href="{{ obj.link }}" class="rutube" style="width: 16px; background: white">
                     <div class="rutube"></div>
                 </a>
 
-                <a href="{{ obj.link }}" class="vkontakte"
-                   style=" width: 16px; background: white">
+                <a href="{{ obj.link }}" class="vkontakte" style="width: 16px; background: white">
                     <div class="vkontakte"></div>
                 </a>
             </div>
 
             <div class="command">
                 <div class="content-wrapper">
-                    <div class="gif">
-                        <img src="{{ obj.gif.url }}" alt="Демонстрация">
+                    <div class="gif-container">
+                        <div class="gif">
+                            <img src="{{ obj.gif.url }}" alt="Демонстрация">
+                        </div>
                     </div>
                     <div class="description">
                         <h4>{{ obj.description }}</h4>
                     </div>
                 </div>
             </div>
-
 
             <div class="cost-container">
                 <div class="cost_ext">
@@ -61,5 +58,6 @@
                     </div>
                 </div>
             </div>
-            <div/>
+        </div>
+    </div>
 {% endblock %}

@@ -197,12 +197,17 @@ a:active {
 }
 
 /* GIF набора команд */
-/* Стили для изображения */
-.gif {
+.gif-container {
     float: left;
-    width: 45%; /* или конкретное значение в px */
-    max-width: 500px;
-    margin: 0 20px 20px 0;
+    width: 100%;
+    max-width: 800px;
+    margin-right: 20px;
+}
+
+/* GIF */
+.gif {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .gif img {
@@ -221,8 +226,14 @@ a:active {
 
 /* Обертка для контента */
 .content-wrapper {
-    display: flow-root; /* Создает новый контекст форматирования */
+    display: flow-root; /* Лучшая альтернатива для clearfix */
     width: 100%;
+}
+
+.content-wrapper::after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
 /* Команда */
@@ -250,6 +261,7 @@ a:active {
 /* Описание команды */
 .description {
     overflow: hidden; /* Для обтекания float */
+    width: 100%;
     text-align: justify;
 }
 
@@ -257,6 +269,7 @@ a:active {
     margin: 0;
     padding: 0;
     width: auto;
+    line-height: 1.5;
 }
 
 /* Полоса команды */
@@ -412,45 +425,3 @@ form textarea {
     }
 }
 
-
-/* Основной контейнер команды */
-.command {
-    margin-top: 10px;
-    width: 100%;
-    max-width: 1200px;
-}
-
-/* Обертка для контента */
-.content-wrapper {
-    display: flow-root; /* Лучшая альтернатива для clearfix */
-    width: 100%;
-}
-
-/* Стили для GIF */
-.gif {
-    float: left;
-    width: 45%;
-    max-width: 500px;
-    margin: 0 20px 20px 0;
-    shape-outside: margin-box;
-}
-
-.gif img {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-/* Описание команды */
-.description {
-    display: block;
-    text-align: justify;
-    padding: 0 5px;
-}
-
-.description h4 {
-    margin: 0;
-    padding: 0;
-    width: auto;
-    line-height: 1.5;
-}
