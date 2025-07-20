@@ -11,7 +11,7 @@ html, body {
 .page-container {
     width: 130%;
     max-width: 1800px; /* Максимальная ширина контента */
-    padding: 0 200px; /* Минимальные отступы по бокам */
+    padding: 0 200px; /* Минимальные отступы по бxокам */
     box-sizing: border-box;
 }
 
