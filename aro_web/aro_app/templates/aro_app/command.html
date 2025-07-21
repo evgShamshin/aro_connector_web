@@ -9,7 +9,6 @@
 
         <div class="line_hr">
             <div class="command">
-                <h1>{{ obj.group.title }}</h1>
                 <h1>{{ obj.title }}
                     <div class="image"><img src="{{ obj.image.url }}"></div>
                 </h1>
@@ -20,7 +19,7 @@
                     <div class="tag_menu_margin_top_5px">
                         <span class="tag">
                             <a href="{% url 'connector_tag' commands.first.1 %}">
-                                {{ commands.first.0 }}
+                                {{ obj.cost }}
                             </a>
                         </span>
                     </div>
@@ -51,13 +50,6 @@
                 </div>
             </div>
 
-            <div class="cost-container">
-                <div class="cost_ext">
-                    <div class="tag_menu_margin_top_5px">
-                        <span class="tag">{{ obj.cost }}</span>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 {% endblock %}

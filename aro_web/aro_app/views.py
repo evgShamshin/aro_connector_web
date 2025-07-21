@@ -68,7 +68,7 @@ class ConnectorPageByTag(DataMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['title_tag'] = get_object_or_404(Tag, slug=self.kwargs['tag_slug'])
-        context['title'] = f"Тег: {context['title_tag'].name}"
+        context['title'] = f"Тег: {context['title_tag'].title}"
         return context
 
 

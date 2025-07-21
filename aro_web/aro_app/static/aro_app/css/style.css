@@ -111,6 +111,10 @@ a:active {
     padding-left: 0; /* Убираем фиксированный отступ */
 }
 
+.group_menu a {
+    color: #666;
+}
+
 /* Содержимое набора команд на главной странице */
 .command_menu {
     height: 190px;
@@ -139,12 +143,15 @@ a:active {
 }
 
 /* Удаление лишних отступов у элементов */
-.command_menu h3,
-.command_menu a {
+.command_menu h3 {
     margin: 0;
     padding: 0;
     line-height: 1.2; /* Более плотная вертикальная посадка */
     font-size: 1rem; /* Опционально можно уменьшить размер */
+}
+
+.command_menu_light a {
+    color: #666;
 }
 
 .command_menu h2 {
@@ -303,6 +310,10 @@ a:active {
     flex-shrink: 0;
 }
 
+.tag_menu_margin_top_5px a {
+    color: #666;
+}
+
 /* Тег margin_top_75px */
 .tag_menu_margin_top_65px {
     background-color: #e5e5e5;
@@ -425,3 +436,13 @@ form textarea {
     }
 }
 
+/* Активный блок */
+.block_active {
+    display: inline-block;
+}
+
+/* Активный блок ссылки */
+.block_active a {
+    color: black;
+    font-weight: 400;
+}
