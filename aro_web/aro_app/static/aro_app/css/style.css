@@ -196,6 +196,30 @@ a:active {
     border-bottom: 1px solid black;
 }
 
+/* Костыль  */
+.line_hr_ {
+    position: relative;
+    width: 70.5%;
+
+
+    display: flex; /* превращаем в flex-контейнер */
+    flex-direction: column; /* размещаем элементы сверху вниз */
+    justify-content: flex-start; /* центрируем по вертикали */
+    text-align: left; /* центрируем текст */
+
+    padding-left: 0px;
+    box-sizing: border-box;
+}
+
+/* Линия под костылем */
+.line_hr_::after {
+    content: "";
+    position: absolute;
+    bottom: 5px; /* Опускаем вниз */
+    width: 99.5%; /* Длина линии */
+    border-bottom: 1px solid black;
+}
+
 /* Изображение содержимого набора команд */
 .image {
     position: relative;

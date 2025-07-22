@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="page-container">
+
     <h1>Личный кабинет</h1>
 
     <form method="post">
@@ -12,4 +14,5 @@
         <hr>
         <a href="{% url 'users:password_change' %}">Сменить пароль</a>
     </form>
-{% endblock %}
+{% endblock %}]
+</div>

@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="page-container">
     <h1>Авторизация</h1>
+
+    <div class="line_hr_">
+    </div>
 
     <form method="post">
         {% csrf_token %}
@@ -9,7 +13,8 @@
         <p>
             <button type="submit">Войти</button>
         </p>
-        <hr>
+
         <a href="{% url 'users:password_reset' %}">Забыли пароль?</a>
     </form>
 {% endblock %}
+</div>

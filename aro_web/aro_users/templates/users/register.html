@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="page-container">
+
     <h1>Регистрация</h1>
+
+    <div class="line_hr_">
+    </div>
 
     <form method="post">
         {% csrf_token %}
@@ -11,3 +16,4 @@
         </p>
     </form>
 {% endblock %}
+</div>
