@@ -5,13 +5,15 @@
 
     <h1>Личный кабинет</h1>
 
+    <div class="line_hr_">
+    </div>
+
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
         <p>
             <button type="submit">Сохранить</button>
         </p>
-        <hr>
         <a href="{% url 'users:password_change' %}">Сменить пароль</a>
     </form>
 {% endblock %}]
