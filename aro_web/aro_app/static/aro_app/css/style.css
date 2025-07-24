@@ -100,7 +100,7 @@ a:active {
     font-size: large;
     color: #CC0000;
     padding-top: 35px;
-    padding-inline: 30px;
+    padding-inline: 2.5%; /* Вместо фиксированных 30px */
 }
 
 /* Содержимое групп команд */
