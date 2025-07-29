@@ -71,7 +71,6 @@ class About(models.Model):
     title = models.CharField(max_length=255)
     link = models.URLField(blank=True)
 
-
 class User(models.Model):
     slug = models.SlugField(unique=True, max_length=255)
     username = models.CharField(unique=True, max_length=255)
