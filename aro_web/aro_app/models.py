@@ -38,7 +38,7 @@ class Command(models.Model):
     class Meta:
         verbose_name = "Команда"
         verbose_name_plural = "Команды"
-        ordering = ('pk',)
+        ordering = ('group', 'pk')
 
     def get_absolute_url(self):
         return reverse('connector_commands', kwargs={'article_slug': self.slug})
