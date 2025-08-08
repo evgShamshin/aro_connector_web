@@ -1,7 +1,6 @@
 from django.contrib import admin, messages
 from django.db.models import Q
 from django.db.models.functions import Length
-
 from .models import Command, Group
 
 
