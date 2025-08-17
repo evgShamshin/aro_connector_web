@@ -27,8 +27,9 @@ Website that hosts the ARO Connector plug-in commands for Autodesk Revit softwar
 
 ## Installation and launch
 1. Clone the repository from https://github.com/evgShamshin/aro_web_connector
-3. Open the project in any IDE. For example, PyCharm has a built-in terminal.
-4. Download PostgreSQL - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+2. Open the project in any IDE. For example, PyCharm has a built-in terminal. 
+3. Download PostgresSQL - https://www.enterprisedb.com/downloads/postgres-postgresql-downloads
+4. Create new role with name `aro` with all privileges 
 5. Create database and restore from https://github.com/evgShamshin/aro_connector_web/blob/master/aro_web/db_dump.sql
 6. Download Redis - https://cloud.redis.io/#/rlec-downloads
 7. Create and activate a virtual environment:
